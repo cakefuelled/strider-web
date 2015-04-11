@@ -39,7 +39,7 @@ html{
 }
 
 .sidebar .list-group{
-  margin:10% 0 0 0;
+  margin:36px 0 0 0;
 }
 
 .sidebar .list-group-item{
@@ -50,8 +50,10 @@ html{
   border-left:solid 4px transparent;
 }
 
-.sidebar .list-group-item.active{
+.sidebar .list-group-item.active, .sidebar .list-group-item:focus, .sidebar .list-group-item.active:hover{
   border-left-color:#72D4A8;
+  background:#efefef;
+  color:#333;
 }
 
 .sidebar .list-group-item.active:after{
