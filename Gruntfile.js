@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-ng-constant');
 
   grunt.initConfig({
     bowerRequirejs: {
@@ -16,6 +17,23 @@ module.exports = function(grunt) {
     clean: {
       build: {
         src: ["build"]
+      }
+    },
+    ngconstant: {
+      options: {
+        name: 'constants',
+        dest: 'app/constants.js',
+        wrap: 'define(["angular"], function(angular) { \n return {%= __ngModule %} \n\n});',
+        constants: {
+          version: grunt.file.readJSON('package.json').version,
+          apiUrl: 'http://localhost:8080/'
+        }
+      },
+      build: {},
+      deploy: {
+        constants: {
+          apiUrl: 'http://getstrider.com/'
+        }
       }
     },
     requirejs: {
@@ -52,8 +70,7 @@ module.exports = function(grunt) {
           replacements: [{
             pattern: 'bower_components/requirejs/require.js',
             replacement: 'optimized.js'
-          },
-          {
+          }, {
             pattern: '<!-- appLoader -->',
             replacement: '<script type="text/javascript">require([\'app\'], function(app) {});</script>'
           }]
@@ -90,6 +107,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'ngconstant:build',
     'requirejs',
     'string-replace',
     'copy'
@@ -97,6 +115,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     'clean',
+    'ngconstant:deploy',
     'requirejs',
     'string-replace',
     'copy',

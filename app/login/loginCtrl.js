@@ -2,9 +2,18 @@
 
 define(['angular'], function(angular) {
   angular.module('LoginCtrls', [])
-    .controller('LoginCtrl', ['$scope',
-      function($scope) {
-        console.info("Login init");
+    .controller('LoginCtrl', ['$scope', '$http', 'apiUrl',
+      function($scope, $http, apiUrl) {
+        $scope.loginBtn = 'Login';
+
+        console.log(apiUrl);
+
+        $scope.login = function(){
+          $http.post(apiUrl+'auth/login', {
+            email: $scope.email,
+            pwd: $scope.pwd
+          });
+        };
       }
     ]);
 });

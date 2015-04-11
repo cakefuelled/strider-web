@@ -8,10 +8,12 @@
 define([
   'angular',
   'ui-router',
-  'login/loginCtrl'
+  'login/loginCtrl',
+  'constants'
 ], function(angular) {
   var app = angular.module('strider', [
     'ui.router',
+    'constants',
 
     'LoginCtrls'
   ]).
