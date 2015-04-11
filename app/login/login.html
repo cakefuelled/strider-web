@@ -14,7 +14,7 @@
       </label>
     </div>
 
-    <button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-sm btn-primary btn-block" type="submit" ng-disabled="loginBtn == 'Signing in...'" ng-bind="loginBtn">Sign in</button>
 
     <p style="margin-top:20px" class="text-muted text-center">Don't have an account yet? <a href="/sign-up">Sign up</a></p>
   </form>

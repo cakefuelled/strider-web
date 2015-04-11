@@ -86,6 +86,7 @@ module.exports = function(grunt) {
             src: [
               'bower_components/bootstrap/dist/css/*',
               'bower_components/bootstrap/dist/fonts/*',
+              'bower_components/sweetalert/lib/sweet-alert.css',
               'app/assets/**',
               'app/appLoader.js',
               'app/**/*.html'

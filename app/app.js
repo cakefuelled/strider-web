@@ -31,6 +31,15 @@ define([
           controller: 'LoginCtrl'
         }
       }
+    }).
+    state('dashboard', {
+      url: '/',
+      views: {
+        'main': {
+          templateUrl: 'app/dashboard/dashboard.html'
+          //controller: 'LoginCtrl'
+        }
+      }
     });
   }]);
 
