@@ -2,19 +2,30 @@
 
 define([
   'angular',
-  'angular-route'
-  //'view1/view1',
-  //'view2/view2'
-], function(angular, angularRoute /* view1, view2*/ ) {
+  'ui-router'
+  //'login/login.html'
+], function(angular /* view1, view2*/ ) {
   // Declare app level module which depends on views, and components
-  return angular.module('myApp', [
-    'ngRoute'
+  return angular.module('strider', [
+    'ui.router'
     //'myApp.view1',
     //'myApp.view2'
   ]).
-  config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({
-      //redirectTo: '/view1'
+  config(['$stateProvider', function($stateProvider) {
+    // $stateProvider.otherwise({
+    //   redirectTo: '/login'
+    // });
+
+    $stateProvider.
+    state('main', {
+      url: '',
+      abstract: true
+    }).
+    state('login', {
+      url: '/login',
+      views: {
+        'main': 'login/login.html'
+      }
     });
   }]);
 });
