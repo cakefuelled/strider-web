@@ -37,23 +37,6 @@ requirejs.config({
     almond: '../bower_components/almond/almond',
     'ui-router': '../bower_components/ui-router/release/angular-ui-router'
   },
-  packages: [
-
-  ]
-});
-
-require([
-  'angular',
-  'app'
-], function(angular, app) {
-
-  console.info("Strider Web initialized");
-
-  var $html = angular.element(document.getElementsByTagName('html')[0]);
-
-  angular.element().ready(function() {
-    // bootstrap the app manually
-    angular.bootstrap(document, ['strider']);
-  });
-
+  packages: [],
+  deps: ['app']
 });

@@ -52,6 +52,10 @@ module.exports = function(grunt) {
           replacements: [{
             pattern: 'bower_components/requirejs/require.js',
             replacement: 'optimized.js'
+          },
+          {
+            pattern: '<!-- appLoader -->',
+            replacement: '<script type="text/javascript">require([\'app\'], function(app) {});</script>'
           }]
         }
       }
@@ -64,7 +68,10 @@ module.exports = function(grunt) {
             expand: true,
             src: [
               'bower_components/bootstrap/dist/css/*',
-              'bower_components/bootstrap/dist/fonts/*'
+              'bower_components/bootstrap/dist/fonts/*',
+              'app/assets/**',
+              'app/appLoader.js',
+              'app/**/*.html'
             ],
             dest: 'build/'
           }

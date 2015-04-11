@@ -1,21 +1,21 @@
+/**
+ * Strider - Inventory Management
+ * @link https://github.com/cakefuelled/strider-web
+ * @license GNU Aferro GPL v3.0 License, https://github.com/cakefuelled/strider-web/blob/master/LICENSE
+ */
 'use strict';
 
 define([
   'angular',
-  'ui-router'
-  //'login/login.html'
-], function(angular /* view1, view2*/ ) {
-  // Declare app level module which depends on views, and components
-  return angular.module('strider', [
-    'ui.router'
-    //'myApp.view1',
-    //'myApp.view2'
+  'ui-router',
+  'login/loginCtrl'
+], function(angular) {
+  var app = angular.module('strider', [
+    'ui.router',
+
+    'LoginCtrls'
   ]).
   config(['$stateProvider', function($stateProvider) {
-    // $stateProvider.otherwise({
-    //   redirectTo: '/login'
-    // });
-
     $stateProvider.
     state('main', {
       url: '',
@@ -24,8 +24,18 @@ define([
     state('login', {
       url: '/login',
       views: {
-        'main': 'login/login.html'
+        'main': {
+          templateUrl: 'app/login/login.html',
+          controller: 'LoginCtrl'
+        }
       }
     });
   }]);
+
+  angular.element().ready(function() {
+    console.info("Strider Web initialized");
+    angular.bootstrap(document, ['strider']);
+  });
+
+  return app;
 });
