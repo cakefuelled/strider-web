@@ -13,9 +13,16 @@ requirejs.config({
       'angular'
     ],
     'ui-router': {
-      deps: ['angular']
+      deps: [
+        'angular'
+      ]
     },
     'angular-bootstrap': {
+      deps: [
+        'angular'
+      ]
+    },
+    'angular-utils-ui-breadcrumbs': {
       deps: [
         'angular'
       ]
@@ -35,8 +42,14 @@ requirejs.config({
     'angular-loader': '../bower_components/angular-loader/angular-loader',
     'angular-route': '../bower_components/angular-route/angular-route',
     almond: '../bower_components/almond/almond',
-    'ui-router': '../bower_components/ui-router/release/angular-ui-router'
+    'ui-router': '../bower_components/ui-router/release/angular-ui-router',
+    sweetalert: '../bower_components/sweetalert/lib/sweet-alert',
+    'angular-utils-ui-breadcrumbs': '../bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs'
   },
-  packages: [],
-  deps: ['app']
+  packages: [
+
+  ],
+  deps: [
+    'app'
+  ]
 });
