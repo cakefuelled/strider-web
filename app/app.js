@@ -9,10 +9,13 @@ define([
   'angular',
   'ui-router',
   'login/loginCtrl',
-  'constants'
+  'constants',
+  'angular-utils-ui-breadcrumbs',
 ], function(angular) {
   var app = angular.module('strider', [
     'ui.router',
+    'angularUtils.directives.uiBreadcrumbs',
+
     'constants',
 
     'LoginCtrls'
@@ -33,14 +36,41 @@ define([
       }
     }).
     state('dashboard', {
-      url: '/',
-      views: {
-        'main': {
-          templateUrl: 'app/dashboard/dashboard.html'
-          //controller: 'LoginCtrl'
+        url: '',
+        data: {
+          displayName: 'Dashboard',
+          breadcrumbProxy: 'dashboard.landing'
+        },
+        views: {
+          'main': {
+            templateUrl: 'app/dashboard/dashboard.html'
+              //controller: 'LoginCtrl'
+          }
+        },
+        abstract: true
+      })
+      .state('dashboard.landing', {
+        url: '/',
+        data: {},
+        views: {
+          'content': {
+            templateUrl: 'app/dashboard/landing/landing.html'
+              //controller: 'LoginCtrl'
+          }
         }
-      }
-    });
+      })
+      .state('dashboard.items', {
+        url: '/items',
+        data: {
+          displayName: 'Items'
+        },
+        views: {
+          'content': {
+            templateUrl: 'app/dashboard/items/items.html'
+              //controller: 'LoginCtrl'
+          }
+        }
+      });
   }]);
 
   angular.element().ready(function() {

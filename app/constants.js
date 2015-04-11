@@ -3,7 +3,7 @@ define(["angular"], function(angular) {
 
 .constant('version', '0.0.1')
 
-.constant('apiUrl', 'http://localhost:8080/')
+.constant('apiUrl', 'http://getstrider.com/')
 
 ; 
 

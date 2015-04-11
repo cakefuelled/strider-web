@@ -22,6 +22,11 @@ requirejs.config({
         'angular'
       ]
     },
+    'angular-utils-ui-breadcrumbs': {
+      deps: [
+        'angular'
+      ]
+    },
     bootstrap: {
       deps: [
         'jquery'
@@ -38,7 +43,8 @@ requirejs.config({
     'angular-route': '../bower_components/angular-route/angular-route',
     almond: '../bower_components/almond/almond',
     'ui-router': '../bower_components/ui-router/release/angular-ui-router',
-    sweetalert: '../bower_components/sweetalert/lib/sweet-alert'
+    sweetalert: '../bower_components/sweetalert/lib/sweet-alert',
+    'angular-utils-ui-breadcrumbs': '../bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs'
   },
   packages: [
 

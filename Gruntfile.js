@@ -87,6 +87,9 @@ module.exports = function(grunt) {
               'bower_components/bootstrap/dist/css/*',
               'bower_components/bootstrap/dist/fonts/*',
               'bower_components/sweetalert/lib/sweet-alert.css',
+              'bower_components/components-font-awesome/css/font-awesome.min.css',
+              'bower_components/components-font-awesome/fonts/*',
+              'bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html',
               'app/assets/**',
               'app/appLoader.js',
               'app/**/*.html'
