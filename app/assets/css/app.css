@@ -18,7 +18,9 @@ html{
 .navbar-inverse .navbar-brand:hover{
   background:inherit;
 }
-
+.navbar a{
+  color:inherit;
+}
 .breadcrumb{
   border-radius: 0;
   margin:0 -15px 15px;
@@ -81,4 +83,15 @@ html{
   background: #454D4B;
   border-left-color:#48C389;
   color: inherit;
+}
+
+.panel-color-1{
+  background-image: linear-gradient(-90deg, #003CF0, #2478FF);
+  color:#fff;
+}
+
+.panel-jumbo{
+  font-size:2em;
+  text-align:right;
+  padding-top:26px;
 }
