@@ -3,7 +3,6 @@
  * @link https://github.com/cakefuelled/strider-web
  * @license GNU Aferro GPL v3.0 License, https://github.com/cakefuelled/strider-web/blob/master/LICENSE
  */
-"use strict";
 
 define([
   // Package deps
@@ -21,6 +20,8 @@ define([
   'constants',
 
 ], function(angular) {
+  "use strict";
+
   var app = angular.module('strider', [
     'ui.router',
     'ui.bootstrap',
@@ -34,7 +35,7 @@ define([
     'ItemsCtrls',
     'LandingCtrls',
 
-    'userService'
+    'UserService'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
       function($stateProvider, cfpLoadingBarProvider) {
@@ -69,10 +70,9 @@ define([
                 templateUrl: 'app/dashboard/landing/landing.html',
                 controller: 'LandingCtrl',
                 resolve: {
-                  currentUserResource: 'currentUser',
+                  currentUserResource: 'CurrentUser',
                   currentUser: ['currentUserResource', function(currentUserResource) {
-                    console.log("resolving currentUser");
-                    return currentUserResource.get().$promise;
+                    return currentUserResource;
                   }]
                 }
               }

@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       options: {
         name: 'constants',
         dest: 'app/constants.js',
-        wrap: 'define(["angular"], function(angular) { \n return {%= __ngModule %} \n\n});',
+        wrap: 'define(["angular"], function(angular) {\n"use strict"; \n return {%= __ngModule %} \n\n});',
         constants: {
           version: grunt.file.readJSON('package.json').version,
           apiUrl: 'http://localhost:8080/'

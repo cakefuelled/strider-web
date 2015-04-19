@@ -1,12 +1,10 @@
 define(['angular'], function(angular) {
-  angular.module('userService', [])
-    .factory('currentUser', ['$resource', 'apiUrl',
-      function($resource, apiUrl) {
-        console.log('current user');
-        
-        return $resource(apiUrl + 'users/current');
+  "use strict";
 
-        //return status.get().$promise;
+  angular.module('UserService', [])
+    .factory('CurrentUser', ['$resource', 'apiUrl',
+      function($resource, apiUrl) {
+        return $resource(apiUrl + 'users/current').get();
       }
     ]);
 });
