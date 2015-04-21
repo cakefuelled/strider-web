@@ -4,7 +4,8 @@ html, body {
   background:transparent;
 }
 html{
-  background: #efefef;
+  background-color: #2B99F6;
+  background-image: linear-gradient(-90deg, #7F16D4, #14BDFF);
   -webkit-box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
@@ -94,4 +95,11 @@ html{
   font-size:2em;
   text-align:right;
   padding-top:26px;
+}
+.btn-primary{
+    background-color: #3680E9;
+    border-color: #2e6da4;
+}
+.btn-primary:hover{
+  background-color: #3779CE;
 }
