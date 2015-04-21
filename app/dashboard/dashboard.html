@@ -15,18 +15,17 @@
   <div class="col-md-3 col-sm-3 expand-height sidebar">
     <div class="row">
       <div class="list-group">
-        <a ui-sref="dashboard.landing" ui-sref-active="active" class="list-group-item">
-          <i class="fa fa-tachometer"></i> Dashboard
-        </a>
-        <a ui-sref="dashboard.items" ui-sref-active="active" class="list-group-item">
-          <i class="fa fa-list-alt"></i> Items
-        </a>
+        <a ui-sref="dashboard.landing" class="list-group-item active"><i class="fa fa-list-alt"></i> Dashboard</a>
+        <a ui-sref="dashboard.items" class="list-group-item">Items</a>
       </div>
     </div>
   </div>
   <!-- Main content -->
   <div class="col-md-9 col-sm-9">
-    <ui-breadcrumbs displayname-property="data.displayName" abstract-proxy-property="data.breadcrumbProxy" template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
+    <ui-breadcrumbs
+      displayname-property="data.displayName"
+      abstract-proxy-property="data.breadcrumbProxy"
+      template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
     </ui-breadcrumbs>
     <div ui-view="content"></div>
   </div>
