@@ -19,7 +19,9 @@ html{
 .navbar-inverse .navbar-brand:hover{
   background:inherit;
 }
-
+.navbar a{
+  color:inherit;
+}
 .breadcrumb{
   border-radius: 0;
   margin:0 -15px 15px;
@@ -40,7 +42,7 @@ html{
 }
 
 .sidebar .list-group{
-  margin:10% 0 0 0;
+  margin:36px 0 0 0;
 }
 
 .sidebar .list-group-item{
@@ -51,8 +53,10 @@ html{
   border-left:solid 4px transparent;
 }
 
-.sidebar .list-group-item.active{
+.sidebar .list-group-item.active, .sidebar .list-group-item:focus, .sidebar .list-group-item.active:hover{
   border-left-color:#72D4A8;
+  background:#efefef;
+  color:#333;
 }
 
 .sidebar .list-group-item.active:after{
@@ -82,6 +86,16 @@ html{
   color: inherit;
 }
 
+.panel-color-1{
+  background-image: linear-gradient(-90deg, #003CF0, #2478FF);
+  color:#fff;
+}
+
+.panel-jumbo{
+  font-size:2em;
+  text-align:right;
+  padding-top:26px;
+}
 .btn-primary{
     background-color: #3680E9;
     border-color: #2e6da4;

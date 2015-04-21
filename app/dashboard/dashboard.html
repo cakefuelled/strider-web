@@ -5,27 +5,39 @@
         Strider
       </a>
     </div>
-    <div class="navbar-text navbar-right">
-      <i class="fa fa-user"></i> Alex
+    <div class="navbar-text navbar-right" style="margin:13px 15px 5px 0">
+      <span class="dropdown" dropdown>
+        <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
+          <img src="https://en.gravatar.com/userimage/1235892/d6344939658ba45b71ae6c23744ab95a.jpeg" style="max-height:2em; max-width:2em" class="img img-circle"> Alejandro Alvarez <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#"><i class="fa fa-user"></i> My profile</a></li>
+          <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+          <li><a href="#"><i class="fa fa-building-o"></i> Organizations</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-sign-out"></i> Log out</a></li>
+        </ul>
+      </span>
     </div>
   </div>
 </nav>
-<div class="">
+<div class="" style="background: #efefef">
   <!-- Sidebar -->
-  <div class="col-md-3 col-sm-3 expand-height sidebar">
+  <div class="col-md-2 col-sm-2 expand-height sidebar">
     <div class="row">
       <div class="list-group">
-        <a ui-sref="dashboard.landing" class="list-group-item active"><i class="fa fa-list-alt"></i> Dashboard</a>
-        <a ui-sref="dashboard.items" class="list-group-item">Items</a>
+        <a ui-sref="dashboard.landing" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-tachometer"></i> Dashboard
+        </a>
+        <a ui-sref="dashboard.items" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-list-alt"></i> Items
+        </a>
       </div>
     </div>
   </div>
   <!-- Main content -->
-  <div class="col-md-9 col-sm-9">
-    <ui-breadcrumbs
-      displayname-property="data.displayName"
-      abstract-proxy-property="data.breadcrumbProxy"
-      template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
+  <div class="col-md-10 col-sm-10">
+    <ui-breadcrumbs displayname-property="data.displayName" abstract-proxy-property="data.breadcrumbProxy" template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
     </ui-breadcrumbs>
     <div ui-view="content"></div>
   </div>
