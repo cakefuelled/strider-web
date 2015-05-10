@@ -32,6 +32,11 @@ requirejs.config({
         'angular'
       ]
     },
+    'angular-http-auth': {
+      deps: [
+        'angular'
+      ]
+    },
     'angular-loading-bar': {
       deps: [
         'angular'
@@ -40,6 +45,11 @@ requirejs.config({
     bootstrap: {
       deps: [
         'jquery'
+      ]
+    },
+    'angular-resource': {
+      deps: [
+        'angular'
       ]
     }
   },
@@ -56,7 +66,10 @@ requirejs.config({
     sweetalert: '../bower_components/sweetalert/lib/sweet-alert',
     'angular-utils-ui-breadcrumbs': '../bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs',
     'angular-auth-interceptor': '../bower_components/angular-auth-interceptor/authHandler',
-    'angular-loading-bar': '../bower_components/angular-loading-bar/build/loading-bar'
+    'angular-loading-bar': '../bower_components/angular-loading-bar/build/loading-bar',
+    jquery: '../bower_components/jquery/dist/jquery',
+    'angular-resource': '../bower_components/angular-resource/angular-resource',
+    'angular-http-auth': '../bower_components/angular-http-auth/src/http-auth-interceptor'
   },
   packages: [
 

@@ -90,6 +90,7 @@
   // Custom Globals
   "globals": {
     "require": false,
+    "requirejs": false,
     "define": false
   }
 }

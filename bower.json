@@ -33,7 +33,9 @@
     "components-font-awesome": "~4.3.0",
     "angular-utils-ui-breadcrumbs": "~0.2.1",
     "angular-auth-interceptor": "*",
-    "angular-loading-bar": "~0.7.1"
+    "angular-loading-bar": "~0.7.1",
+    "jquery": "~2.1.4",
+    "angular-http-auth": "~1.2.2"
   },
   "resolutions": {
     "angular": "~1.3.13"

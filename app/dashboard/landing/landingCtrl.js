@@ -1,10 +1,10 @@
-'use strict';
-
 define(['angular'], function(angular) {
+  'use strict';
+
   angular.module('LandingCtrls', [])
-    .controller('LandingCtrl', ['$scope', 'currentUser',
-      function($scope, currentUser) {
-        console.log("Landing Controller", currentUser);
+    .controller('LandingCtrl', ['$scope',
+      function($scope) {
+        console.log("Landing Controller");
       }
     ]);
 });

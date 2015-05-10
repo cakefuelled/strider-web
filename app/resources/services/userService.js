@@ -1,10 +1,10 @@
 define(['angular'], function(angular) {
   "use strict";
 
-  angular.module('UserService', [])
-    .factory('CurrentUser', ['$resource', 'apiUrl',
+  angular.module('services.users', [])
+    .service('User', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'users/current').get();
+        return $resource(apiUrl + 'users/:id');
       }
     ]);
 });

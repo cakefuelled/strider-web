@@ -8,16 +8,19 @@ define([
   // Package deps
   'angular',
   'ui-router',
+  'angular-resource',
   'angular-bootstrap',
-  'angular-utils-ui-breadcrumbs',
-  'angular-auth-interceptor',
   'angular-loading-bar',
+  'angular-http-auth',
+  'angular-auth-interceptor',
+  'angular-utils-ui-breadcrumbs',
   // App deps
-  'login/loginCtrl',
+  'constants',
   'dashboard/items/itemsCtrl',
   'dashboard/landing/landingCtrl',
+  'dashboard/dashboardCtrl',
   'resources/services/userService',
-  'constants',
+  'resources/directives/loginHandler',
 
 ], function(angular) {
   "use strict";
@@ -26,29 +29,23 @@ define([
     'ui.router',
     'ui.bootstrap',
     'angularUtils.directives.uiBreadcrumbs',
+    'http-auth-interceptor',
     'authHandler',
+    'loginHandler',
     'angular-loading-bar',
+    'ngResource',
 
     'constants',
 
-    'LoginCtrls',
+    'DashboardCtrls',
     'ItemsCtrls',
     'LandingCtrls',
 
-    'UserService'
+    'services.users'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
       function($stateProvider, cfpLoadingBarProvider) {
         $stateProvider.
-        state('login', {
-          url: '/login',
-          views: {
-            'main': {
-              templateUrl: 'app/login/login.html',
-              controller: 'LoginCtrl'
-            }
-          }
-        }).
         state('dashboard', {
             url: '',
             data: {
@@ -57,7 +54,8 @@ define([
             },
             views: {
               'main': {
-                templateUrl: 'app/dashboard/dashboard.html'
+                templateUrl: 'app/dashboard/dashboard.html',
+                controller: 'DashboardCtrl'
               }
             },
             abstract: true
@@ -68,13 +66,7 @@ define([
             views: {
               'content': {
                 templateUrl: 'app/dashboard/landing/landing.html',
-                controller: 'LandingCtrl',
-                resolve: {
-                  currentUserResource: 'CurrentUser',
-                  currentUser: ['currentUserResource', function(currentUserResource) {
-                    return currentUserResource;
-                  }]
-                }
+                controller: 'LandingCtrl'
               }
             }
           })
@@ -94,21 +86,13 @@ define([
         cfpLoadingBarProvider.includeBar = true;
       }
     ])
-    .run(['$rootScope', function($rootScope) {
+    .run([function() {
 
       // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
       if (window.location.hash.length < 1 || window.location.hash === '') {
         console.log("Added hashbang");
         window.location = window.location.origin + window.location.pathname + '#/login' + window.location.search;
       }
-
-      $rootScope.$on('event:auth-loginRequired', function(event, data) {
-        console.log("Login required");
-      });
-
-      $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
-        console.log("Login done");
-      });
     }]);
 
   angular.element().ready(function() {
