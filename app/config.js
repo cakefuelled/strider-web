@@ -69,7 +69,8 @@ requirejs.config({
     'angular-loading-bar': '../bower_components/angular-loading-bar/build/loading-bar',
     jquery: '../bower_components/jquery/dist/jquery',
     'angular-resource': '../bower_components/angular-resource/angular-resource',
-    'angular-http-auth': '../bower_components/angular-http-auth/src/http-auth-interceptor'
+    'angular-http-auth': '../bower_components/angular-http-auth/src/http-auth-interceptor',
+    'md5': '../bower_components/blueimp-md5/js/md5'
   },
   packages: [
 

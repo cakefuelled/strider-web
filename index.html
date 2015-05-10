@@ -14,6 +14,7 @@
   <link href="bower_components/sweetalert/lib/sweet-alert.css" rel="stylesheet">
   <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
+  <link href="bower_components/animate.css/animate.min.css" rel="stylesheet">
   <link href="app/assets/css/app.css" rel="stylesheet">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -37,6 +38,7 @@
             Sign in
           </div>
           <div class="panel-body">
+            <div class="text-danger text-center shake" ng-class="{'animated': loginErrors.length > 0}" style="padding-bottom: 10px;">{{loginErrors}}</div>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" ng-model="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>

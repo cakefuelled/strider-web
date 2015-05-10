@@ -12,43 +12,40 @@ define(['angular', 'jquery', 'sweetalert'], function(angular, $, swal) {
           var login = $('#loginView');
 
           scope.$on('event:auth-loginRequired', function() {
-            console.log("login required");
             scope.mainClass = 'blur';
-            login.fadeIn('fast', function() {
-              //main.hide();
-            });
+            login.fadeIn('fast');
           });
           scope.$on('event:auth-loginConfirmed', function() {
-            //main.show();
-            login.slideUp();
+            scope.mainClass = '';
+            login.fadeOut();
           });
         },
-        controller: ['$scope', 'apiUrl', 'authHandler', '$http', function($scope, apiUrl, authHandler, $http) {
+        controller: ['$scope', 'apiUrl', 'authService', '$http', function($scope, apiUrl, authService, $http) {
           $scope.loginBtn = 'Sign in';
+          $scope.loginErrors = '';
 
           $scope.login = function() {
             $scope.loginBtn = 'Signing in...';
-            $http.post(apiUrl + 'auth/login', {
-              email: $scope.email,
-              pwd: $scope.pwd
+            $scope.loginErrors = '';
+
+            $http({
+              url: apiUrl + 'auth/login',
+              method: 'POST',
+              ignoreAuthModule: true,
+              data: {
+                email: $scope.email,
+                pwd: $scope.pwd
+              }
             }).success(function(data, status, headers) {
               $scope.loginBtn = 'Sign in';
-              authHandler.loginConfirmed({
-                cookie: headers.cookie
-              }, function() {
-                console.log("Updater function");
-              });
 
-              //application of tokens to previously fired requests:
-              var token = headers.cookie;
-
-              authHandler.loginConfirmed('success', function(config) {
-                config.headers.Cookie = token;
+              authService.loginConfirmed('success', function(config) {
                 return config;
               });
             }).
-            error(function(data, status, headers, config) {
-              swal("An error occured", data.message, "warning");
+            error(function(data) {
+              //swal("An error occured", data.message, "warning");
+              $scope.loginErrors = data.message;
               $scope.loginBtn = 'Sign in';
             });
           };

@@ -21,6 +21,7 @@ define([
   'dashboard/dashboardCtrl',
   'resources/services/userService',
   'resources/directives/loginHandler',
+  'resources/directives/gravatar',
 
 ], function(angular) {
   "use strict";
@@ -41,7 +42,8 @@ define([
     'ItemsCtrls',
     'LandingCtrls',
 
-    'services.users'
+    'services.users',
+    'strider.gravatar'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
       function($stateProvider, cfpLoadingBarProvider) {
@@ -86,7 +88,9 @@ define([
         cfpLoadingBarProvider.includeBar = true;
       }
     ])
-    .run([function() {
+    .run(['$http', function($http) {
+
+      $http.defaults.withCredentials = true;
 
       // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
       if (window.location.hash.length < 1 || window.location.hash === '') {
