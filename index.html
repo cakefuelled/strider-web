@@ -22,11 +22,37 @@
     <![endif]-->
 </head>
 
-<body>
-  <div ui-view="main">
+<body class="login-handler waiting-for-angular">
+  <div ui-view="main" ng-class="mainClass" class="no-blur">
     <div style="margin:15% auto 0; width: 200px; text-align:center; color:#fff">
       <h1>Strider</h1>
       <p style="color:#efefef">Loading...</p>
+    </div>
+  </div>
+  <div id="loginView">
+    <div class="form-signin">
+      <form ng-submit="login()">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Sign in
+          </div>
+          <div class="panel-body">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" ng-model="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" ng-model="pwd" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-sm btn-primary btn-block" type="submit" ng-disabled="loginBtn == 'Signing in...'" ng-bind="loginBtn">Sign in</button>
+          </div>
+        </div>
+      </form>
+      <p style="margin-top:20px; color: #E8E8E8;" class="text-muted text-center">
+        Don't have an account yet? <a href="/sign-up" style="color: #4ACCFF;">Sign up</a>
+      </p>
     </div>
   </div>
   <script type="text/javascript" src="optimized.js" data-main="app/config.js"></script>
