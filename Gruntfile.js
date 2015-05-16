@@ -94,7 +94,8 @@ module.exports = function(grunt) {
               'bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html',
               'app/assets/**',
               'app/appLoader.js',
-              'app/**/*.html'
+              'app/**/*.html',
+              'CNAME'
             ],
             dest: 'build/'
           }
