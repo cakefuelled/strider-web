@@ -2,9 +2,11 @@ define(['angular'], function(angular) {
   'use strict';
   
   angular.module('ItemsCtrls', [])
-    .controller('ItemsCtrl', ['$scope', '$http', 'apiUrl',
-      function($scope, $http, apiUrl) {
-        console.log("Items Controller");
+    .controller('ItemsCtrl', ['$scope', '$http', 'apiUrl', 'Items',
+      function($scope, $http, apiUrl, Items) {
+        $scope.items = Items.query({
+          org: 'testOrg'
+        });
       }
     ]);
 });
