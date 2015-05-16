@@ -17,6 +17,7 @@ define([
   // App deps
   'constants',
   'dashboard/items/itemsCtrl',
+  'dashboard/items/itemsService',
   'dashboard/landing/landingCtrl',
   'dashboard/dashboardCtrl',
   'resources/services/userService',
@@ -43,6 +44,7 @@ define([
     'LandingCtrls',
 
     'services.users',
+    'services.items',
     'strider.gravatar'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
