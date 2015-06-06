@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('services.users', [])
     .service('User', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'users/:id');
+        return $resource(apiUrl + 'Users/:id');
       }
     ]);
 });
