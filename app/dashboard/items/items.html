@@ -1,1 +1,24 @@
-Items dashboard
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart"></i> Items
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed table-striped" ng-show="items.length > 0">
+          <tr>
+            <th>Type</th>
+            <th>Location</th>
+          </tr>
+          <tr ng-repeat="item in items">
+            <td>{{item.type}}</td>
+            <td>{{item.location}}</td>
+          </tr>
+        </table>
+        <div class="alert alert-info" ng-show="items.length < 1">
+          <i class="fa fa-warning"></i> No items available
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
