@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('services.users', [])
     .service('User', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'users/:id', null, {
+        return $resource(apiUrl + 'users/:id', {id: 'me'}, {
           login: {
             method: 'POST',
             url: apiUrl + 'users/login',
@@ -21,7 +21,7 @@ define(['angular'], function(angular) {
     ])
     .service('UserOrgs', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'users/:id/organisations/:orgId');
+        return $resource(apiUrl + 'users/:id/organisations/:orgId', {id: 'me'});
       }
     ]);
 });

@@ -5,10 +5,6 @@ define(['angular'], function(angular) {
     .controller('LandingCtrl', ['$scope', 'UserOrgs',
       function($scope, UserOrgs) {
         console.log("Landing Controller");
-
-        $scope.organisations = UserOrgs.query({
-          id: 'me'
-        });
       }
     ]);
 });

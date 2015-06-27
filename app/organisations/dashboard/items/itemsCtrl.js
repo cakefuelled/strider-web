@@ -6,7 +6,10 @@ define(['angular'], function(angular) {
       function($scope, $http, apiUrl, Items) {
         console.log("Items controller");
         $scope.items = [];
-        
+
+        console.log('org', $scope.Org);
+
+
         // $scope.items = Items.query({
         //   org: 'testOrg'
         // });

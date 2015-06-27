@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header row col-md-3">
       <a class="navbar-brand" href="#">
-        Strider
+        Strider - <b>{{Org.name}}</b>
       </a>
     </div>
     <div class="navbar-text navbar-right" style="margin:13px 15px 5px 0">
@@ -13,7 +13,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a href=""><i class="fa fa-user"></i> My profile</a></li>
           <li><a href=""><i class="fa fa-gear"></i> Settings</a></li>
-          <li><a href=""><i class="fa fa-building-o"></i> Organizations</a></li>
+          <li><a ui-sref="orgs"><i class="fa fa-building-o"></i> Organizations</a></li>
           <li class="divider"></li>
           <li><a href="" ng-click="$event.preventDefault(); logout()"><i class="fa fa-sign-out"></i> Log out</a></li>
         </ul>
@@ -26,10 +26,10 @@
   <div class="col-md-2 col-sm-2 expand-height sidebar">
     <div class="row">
       <div class="list-group">
-        <a ui-sref="dashboard.landing" ui-sref-active="active" class="list-group-item">
+        <a ui-sref="orgs.dashboard.landing" ui-sref-active="active" class="list-group-item">
           <i class="fa fa-tachometer"></i> Dashboard
         </a>
-        <a ui-sref="dashboard.items" ui-sref-active="active" class="list-group-item">
+        <a ui-sref="orgs.dashboard.items" ui-sref-active="active" class="list-group-item">
           <i class="fa fa-list-alt"></i> Items
         </a>
       </div>
