@@ -42,12 +42,23 @@ requirejs.config({
         'angular'
       ]
     },
+    'angular-ladda': {
+      deps: [
+        'angular',
+        'ladda'
+      ]
+    },
     bootstrap: {
       deps: [
         'jquery'
       ]
     },
     'angular-resource': {
+      deps: [
+        'angular'
+      ]
+    },
+    'angular-storage': {
       deps: [
         'angular'
       ]
@@ -70,7 +81,12 @@ requirejs.config({
     jquery: '../bower_components/jquery/dist/jquery',
     'angular-resource': '../bower_components/angular-resource/angular-resource',
     'angular-http-auth': '../bower_components/angular-http-auth/src/http-auth-interceptor',
-    'md5': '../bower_components/blueimp-md5/js/md5'
+    md5: '../bower_components/blueimp-md5/js/md5',
+    ladda: '../bower_components/ladda/dist/ladda.min',
+    spin: '../bower_components/spin.js/spin',
+    'angular-ladda': '../bower_components/angular-ladda/dist/angular-ladda.min',
+    'blueimp-md5': '../bower_components/blueimp-md5/js/md5',
+    'angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage'
   },
   packages: [
 

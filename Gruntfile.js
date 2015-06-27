@@ -92,6 +92,7 @@ module.exports = function(grunt) {
               'bower_components/angular-loading-bar/build/loading-bar.min.css',
               'bower_components/components-font-awesome/fonts/*',
               'bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html',
+              'bower_components/ladda/dist/ladda-themeless.min.css',
               'app/assets/**',
               'app/appLoader.js',
               'app/**/*.html',

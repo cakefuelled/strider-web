@@ -8,6 +8,8 @@ define([
   // Package deps
   'angular',
   'ui-router',
+  'angular-ladda',
+  'angular-storage',
   'angular-resource',
   'angular-bootstrap',
   'angular-loading-bar',
@@ -16,10 +18,14 @@ define([
   'angular-utils-ui-breadcrumbs',
   // App deps
   'constants',
+  // Dashboard
   'dashboard/items/itemsCtrl',
   'dashboard/items/itemsService',
   'dashboard/landing/landingCtrl',
   'dashboard/dashboardCtrl',
+  // Signup
+  'sign-up/signUpCtrl',
+  // Resources
   'resources/services/userService',
   'resources/directives/loginHandler',
   'resources/directives/gravatar',
@@ -36,12 +42,16 @@ define([
     'loginHandler',
     'angular-loading-bar',
     'ngResource',
+    'angular-ladda',
+    'angular-storage',
 
     'constants',
 
     'DashboardCtrls',
     'ItemsCtrls',
     'LandingCtrls',
+
+    'SignUpCtrls',
 
     'services.users',
     'services.items',
@@ -85,21 +95,40 @@ define([
                 controller: 'ItemsCtrl'
               }
             }
+          })
+          .state('sign-up', {
+            url: '/sign-up',
+            data: {},
+            views: {
+              'main': {
+                templateUrl: 'app/sign-up/sign-up.html',
+                controller: 'SignUpCtrl'
+              }
+            }
           });
 
         cfpLoadingBarProvider.includeBar = true;
       }
     ])
-    .run(['$http', function($http) {
+    .run(['$http', 'store',
+      function($http, store) {
 
-      $http.defaults.withCredentials = true;
+        $http.defaults.withCredentials = true;
 
-      // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
-      if (window.location.hash.length < 1 || window.location.hash === '') {
-        console.log("Added hashbang");
-        window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
+        // Check if machine has accessToken stored
+        var accessToken = store.get('accessToken');
+        if (typeof(accessToken) !== 'undefined' && accessToken !== null && accessToken.length > 0) {
+          // Set it on the http header
+          $http.defaults.headers.common.Authorization = accessToken;
+        }
+
+        // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
+        if (window.location.hash.length < 1 || window.location.hash === '') {
+          console.log("Added hashbang");
+          window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
+        }
       }
-    }]);
+    ]);
 
   angular.element().ready(function() {
     console.info("Strider Web initialized");

@@ -20,36 +20,40 @@ define(['angular', 'jquery', 'sweetalert'], function(angular, $, swal) {
             login.fadeOut();
           });
         },
-        controller: ['$scope', 'apiUrl', 'authService', '$http', function($scope, apiUrl, authService, $http) {
-          $scope.loginBtn = 'Sign in';
-          $scope.loginErrors = '';
-
-          $scope.login = function() {
-            $scope.loginBtn = 'Signing in...';
+        controller: ['store', '$scope', 'apiUrl', 'authService', 'User', '$http',
+          function(store, $scope, apiUrl, authService, User, $http) {
+            $scope.loginBtn = 'Sign in';
             $scope.loginErrors = '';
 
-            $http({
-              url: apiUrl + 'auth/login',
-              method: 'POST',
-              ignoreAuthModule: true,
-              data: {
-                email: $scope.email,
-                pwd: $scope.pwd
-              }
-            }).success(function(data, status, headers) {
-              $scope.loginBtn = 'Sign in';
+            $scope.login = function() {
+              $scope.loginBtn = 'Signing in...';
+              $scope.loginErrors = '';
 
-              authService.loginConfirmed('success', function(config) {
-                return config;
-              });
-            }).
-            error(function(data) {
-              //swal("An error occured", data.message, "warning");
-              $scope.loginErrors = data.message;
-              $scope.loginBtn = 'Sign in';
-            });
-          };
-        }]
+              // Set the TTL of the token to 2 weeks
+              $scope.user.ttl = 1000 * 60 * 60 * 24 * 7 * 2;
+
+              User.login($scope.user).$promise.then(
+                function(accessToken){
+                  $scope.loginBtn = 'Sign in';
+
+                  // Set the header
+                  $http.defaults.headers.common.Authorization = accessToken.id;
+
+                  // Store it for later
+                  store.set('accessToken', accessToken.id);
+
+                  authService.loginConfirmed('success', function(config) {
+                    return config;
+                  });
+                }, function(err){
+                  console.log("Failed", err);
+
+                  $scope.loginErrors = err.data.error.message;
+                  $scope.loginBtn = 'Sign in';
+                });
+            };
+          }
+        ]
       };
     });
 });

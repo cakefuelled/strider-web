@@ -15,6 +15,7 @@
   <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
   <link href="bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="bower_components/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
   <link href="app/assets/css/app.css" rel="stylesheet">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -40,20 +41,20 @@
           <div class="panel-body">
             <div class="text-danger text-center shake" ng-class="{'animated': loginErrors.length > 0}" style="padding-bottom: 10px;">{{loginErrors}}</div>
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" ng-model="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <input type="email" ng-model="user.email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" ng-model="pwd" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" ng-model="user.password" id="inputPassword" class="form-control" placeholder="Password" required>
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <button class="btn btn-sm btn-primary btn-block" type="submit" ng-disabled="loginBtn == 'Signing in...'" ng-bind="loginBtn">Sign in</button>
+            <button class="btn btn-sm btn-primary btn-block" type="submit" ladda="loginBtn !== 'Sign in'" ng-disabled="loginBtn !== 'Sign in'" ng-bind="loginBtn">Sign in</button>
           </div>
         </div>
       </form>
       <p style="margin-top:20px;" class="text-muted text-center">
-        Don't have an account yet? <a href="/sign-up">Sign up</a>
+        Don't have an account yet? <a ui-sref="sign-up">Sign up</a>
       </p>
     </div>
   </div>
