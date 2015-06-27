@@ -21,6 +21,7 @@ define([
   // Dashboard
   'dashboard/items/itemsCtrl',
   'dashboard/items/itemsService',
+  'dashboard/items/new/newCtrl',
   'dashboard/landing/landingCtrl',
   'dashboard/dashboardCtrl',
   // Signup
@@ -93,6 +94,18 @@ define([
               'content': {
                 templateUrl: 'app/dashboard/items/items.html',
                 controller: 'ItemsCtrl'
+              }
+            }
+          })
+          .state('dashboard.items.new', {
+            url: '/new',
+            data: {
+              displayName: 'New Item'
+            },
+            views: {
+              'content@dashboard': {
+                templateUrl: 'app/dashboard/items/new/new.html',
+                controller: 'NewItemCtrl'
               }
             }
           })

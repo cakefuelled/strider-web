@@ -4,9 +4,14 @@ define(['angular'], function(angular) {
   angular.module('ItemsCtrls', [])
     .controller('ItemsCtrl', ['$scope', '$http', 'apiUrl', 'Items',
       function($scope, $http, apiUrl, Items) {
-        $scope.items = Items.query({
-          org: 'testOrg'
-        });
+        console.log("Items controller");
+        $scope.items = [];
+        
+        // $scope.items = Items.query({
+        //   org: 'testOrg'
+        // });
+        // 
+        
       }
     ]);
 });

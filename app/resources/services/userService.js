@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('services.users', [])
     .service('User', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'Users/:id', null, {
+        return $resource(apiUrl + 'users/:id', null, {
           login: {
             method: 'POST',
             url: apiUrl + 'users/login',
@@ -17,6 +17,11 @@ define(['angular'], function(angular) {
             ignoreAuthModule: true
           }
         });
+      }
+    ])
+    .service('UserOrgs', ['$resource', 'apiUrl',
+      function($resource, apiUrl) {
+        return $resource(apiUrl + 'users/:id/Organisations/:orgId');
       }
     ]);
 });
