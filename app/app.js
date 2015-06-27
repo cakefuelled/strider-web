@@ -211,7 +211,7 @@ define([
         // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
         if (window.location.hash.length < 1 || window.location.hash === '') {
           console.log("Added hashbang");
-          window.location = window.location.origin + window.location.pathname + '#/org' + window.location.search;
+          window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
         }
       }
     ]);
