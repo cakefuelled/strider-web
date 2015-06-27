@@ -11,11 +11,11 @@
           <img gravatar email-hash="{{user.md5}}"  style="max-height:2em; max-width:2em" class="img img-circle"> {{user.name}} <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#"><i class="fa fa-user"></i> My profile</a></li>
-          <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-          <li><a href="#"><i class="fa fa-building-o"></i> Organizations</a></li>
+          <li><a href=""><i class="fa fa-user"></i> My profile</a></li>
+          <li><a href=""><i class="fa fa-gear"></i> Settings</a></li>
+          <li><a href=""><i class="fa fa-building-o"></i> Organizations</a></li>
           <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-sign-out"></i> Log out</a></li>
+          <li><a href="" ng-click="$event.preventDefault(); logout()"><i class="fa fa-sign-out"></i> Log out</a></li>
         </ul>
       </span>
     </div>
