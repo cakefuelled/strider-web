@@ -4,25 +4,19 @@ define(['angular'], function(angular) {
   angular.module('ItemsCtrls', [])
     .controller('ItemsCtrl', ['$scope', '$http', '$stateParams', '$modal', 'apiUrl', 'Items',
       function($scope, $http, $stateParams, $modal, apiUrl, Items) {
-        $scope.org = {
-          path: 'aimar',
-          domain: 'aimarfoundation.org',
-          name: 'Aimar Foundation',
-          id: '558e9ee192f8676afa383848'
-        };
 
         $scope.items = [];
         
         $scope.items = Items.query({
-          orgId: $scope.org.id
+          orgId: $scope.Org.id
         });
 
         $scope.showNewItemForm = $modal.open({
-          templateUrl: 'app/dashboard/items/new/new.html',
+          templateUrl: 'app/organisations/dashboard/items/new/newItem.html',
           controller: 'NewItemCtrl',
           resolve: {
             orgId: function() {
-              return $scope.org.id;
+              return $scope.Org.id;
             }
           }
         });

@@ -22,7 +22,7 @@ define([
   'organisations/organisationsCtrl',
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
-  'organisations/dashboard/items/new/newCtrl',
+  'organisations/dashboard/items/new/newItemCtrl',
   'organisations/dashboard/landing/landingCtrl',
   'organisations/dashboard/dashboardCtrl',
   // Signup
