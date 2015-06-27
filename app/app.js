@@ -19,11 +19,12 @@ define([
   // App deps
   'constants',
   // Dashboard
-  'dashboard/items/itemsCtrl',
-  'dashboard/items/itemsService',
-  'dashboard/items/new/newCtrl',
-  'dashboard/landing/landingCtrl',
-  'dashboard/dashboardCtrl',
+  'organisations/organisationsCtrl',
+  'organisations/dashboard/items/itemsCtrl',
+  'organisations/dashboard/items/itemsService',
+  'organisations/dashboard/items/new/newCtrl',
+  'organisations/dashboard/landing/landingCtrl',
+  'organisations/dashboard/dashboardCtrl',
   // Signup
   'sign-up/signUpCtrl',
   // Resources
@@ -48,6 +49,7 @@ define([
 
     'constants',
 
+    'OrganisationCtrls',
     'DashboardCtrls',
     'ItemsCtrls',
     'LandingCtrls',
@@ -61,50 +63,91 @@ define([
   config(['$stateProvider', 'cfpLoadingBarProvider',
       function($stateProvider, cfpLoadingBarProvider) {
         $stateProvider.
-        state('dashboard', {
-            url: '',
+        state('orgs', {
+            url: '/',
             data: {
-              displayName: 'Dashboard',
-              breadcrumbProxy: 'dashboard.landing'
+              displayName: false
             },
             views: {
               'main': {
-                templateUrl: 'app/dashboard/dashboard.html',
+                templateUrl: 'app/organisations/organisations.html',
+                controller: 'OrganisationCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard', {
+            abstract: true,
+            url: 'org/:organisation',
+            data: {
+              displayName: 'Dashboard',
+              breadcrumbProxy: 'orgs.dashboard.landing'
+            },
+            views: {
+              'main@': {
+                templateUrl: 'app/organisations/dashboard/dashboard.html',
                 controller: 'DashboardCtrl'
               }
             },
-            abstract: true
+            resolve: {
+              Org: ['$stateParams', 'UserOrgs', '$state', '$q',
+                function($stateParams, UserOrgs, $state, $q) {
+                  console.log("Resolving org");
+                  var orgs = UserOrgs.query(),
+                      org = null,
+                      deferred = $q.defer();
+
+                  orgs.$promise.then(function(data) {
+                    // Resolve the org object
+                    var total = data.length;
+                    for (var i = 0; i < total; i++) {
+                      if (data[i].path === $stateParams.organisation) {
+                        org = data[i];
+                        break;
+                      }
+                    }
+                    if (org === null) {
+                      $state.go('orgs');
+                      return;
+                    }
+                    console.log(org);
+                    deferred.resolve(org);
+                  });
+
+                  return deferred.promise;
+                }
+              ]
+            }
           })
-          .state('dashboard.landing', {
+          .state('orgs.dashboard.landing', {
             url: '/',
             data: {},
             views: {
               'content': {
-                templateUrl: 'app/dashboard/landing/landing.html',
+                templateUrl: 'app/organisations/dashboard/landing/landing.html',
                 controller: 'LandingCtrl'
               }
             }
           })
-          .state('dashboard.items', {
+          .state('orgs.dashboard.items', {
             url: '/items',
             data: {
               displayName: 'Items'
             },
             views: {
               'content': {
-                templateUrl: 'app/dashboard/items/items.html',
+                templateUrl: 'app/organisations/dashboard/items/items.html',
                 controller: 'ItemsCtrl'
               }
             }
           })
-          .state('dashboard.items.new', {
+          .state('orgs.dashboard.items.new', {
             url: '/new',
             data: {
               displayName: 'New Item'
             },
             views: {
-              'content@dashboard': {
-                templateUrl: 'app/dashboard/items/new/new.html',
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/items/new/new.html',
                 controller: 'NewItemCtrl'
               }
             }
@@ -138,7 +181,7 @@ define([
         // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
         if (window.location.hash.length < 1 || window.location.hash === '') {
           console.log("Added hashbang");
-          window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
+          window.location = window.location.origin + window.location.pathname + '#/org' + window.location.search;
         }
       }
     ]);

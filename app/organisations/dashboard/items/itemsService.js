@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('services.items', [])
     .factory('Items', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + ':orgId/items/:id');
+        return $resource(apiUrl + 'organisations/:org/items/:id');
       }
     ]);
 });
