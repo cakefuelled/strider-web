@@ -11,6 +11,8 @@ define(['angular'], function(angular) {
           orgId: $scope.Org.id
         });
 
+        console.log($scope.Org);
+
         $scope.showNewItemForm = $modal.open({
           templateUrl: 'app/organisations/dashboard/items/new/newItem.html',
           controller: 'NewItemCtrl',

@@ -2,10 +2,38 @@
   <div class="col-md-4 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-bar-chart"></i> Items
+        <a ui-sref="orgs.dashboard.items">
+          <i class="fa fa-bar-chart"></i> Items
+        </a>
       </div>
       <div class="panel-body">
         {{counts.items.count}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a ui-sref="orgs.dashboard.locations">
+          <i class="fa fa-bar-chart"></i> Locations
+        </a>
+      </div>
+      <div class="panel-body">
+        {{counts.locations.count}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a ui-sref="orgs.dashboard.users">
+          <i class="fa fa-bar-chart"></i> Users
+        </a>
+      </div>
+      <div class="panel-body">
+        {{counts.users.count}}
       </div>
     </div>
   </div>

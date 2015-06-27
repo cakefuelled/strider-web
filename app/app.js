@@ -23,6 +23,10 @@ define([
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
+  'organisations/dashboard/users/usersService',
+  'organisations/dashboard/users/userCtrl',
+  'organisations/dashboard/locations/locationsCtrl',
+  'organisations/dashboard/locations/locationsService',
   'organisations/dashboard/landing/landingCtrl',
   'organisations/dashboard/dashboardCtrl',
   // Signup
@@ -30,7 +34,7 @@ define([
   // Resources
   'resources/services/userService',
   'resources/directives/loginHandler',
-  'resources/directives/gravatar',
+  'resources/directives/gravatar'
 
 ], function(angular) {
   "use strict";
@@ -53,11 +57,15 @@ define([
     'DashboardCtrls',
     'ItemsCtrls',
     'LandingCtrls',
+    'LocationCtrls',
+    'UsersCtrls',
 
     'SignUpCtrls',
 
     'services.users',
     'services.items',
+    'services.locations',
+    'services.orgUsers',
     'strider.gravatar'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
@@ -91,7 +99,6 @@ define([
             resolve: {
               Org: ['$stateParams', 'UserOrgs', '$state', '$q',
                 function($stateParams, UserOrgs, $state, $q) {
-                  console.log("Resolving org");
                   var orgs = UserOrgs.query(),
                       org = null,
                       deferred = $q.defer();
@@ -109,7 +116,6 @@ define([
                       $state.go('orgs');
                       return;
                     }
-                    console.log(org);
                     deferred.resolve(org);
                   });
 
@@ -149,6 +155,30 @@ define([
               'content@orgs.dashboard': {
                 templateUrl: 'app/organisations/dashboard/items/new/new.html',
                 controller: 'NewItemCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.locations', {
+            url: '/locations',
+            data: {
+              displayName: 'Locations'
+            },
+            views: {
+              'content': {
+                templateUrl: 'app/organisations/dashboard/locations/locations.html',
+                controller: 'LocationCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.users', {
+            url: '/users',
+            data: {
+              displayName: 'Users'
+            },
+            views: {
+              'content': {
+                templateUrl: 'app/organisations/dashboard/users/users.html',
+                controller: 'UsersCtrl'
               }
             }
           })
