@@ -25,6 +25,7 @@ define([
   'organisations/dashboard/users/usersService',
   'organisations/dashboard/users/userCtrl',
   'organisations/dashboard/items/new/newCtrl',
+  'organisations/dashboard/items/scan/scanCtrl',
   'organisations/dashboard/locations/locationsCtrl',
   'organisations/dashboard/locations/locationsService',
   'organisations/dashboard/landing/landingCtrl',
@@ -155,6 +156,18 @@ define([
               'content@orgs.dashboard': {
                 templateUrl: 'app/organisations/dashboard/items/new/new.html',
                 controller: 'NewItemCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.items.scan', {
+            url: '/scan',
+            data: {
+              displayName: 'Scan Item'
+            },
+            views: {
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/items/scan/scan.html',
+                controller: 'ScanCtrl'
               }
             }
           })
