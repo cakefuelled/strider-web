@@ -2,9 +2,9 @@ define(['angular'], function(angular) {
   "use strict";
 
   angular.module('services.items', [])
-    .service('Items', ['$resource', 'apiUrl',
+    .factory('Items', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + ':org/items/:id');
+        return $resource(apiUrl + ':orgId/items/:id');
       }
     ]);
 });
