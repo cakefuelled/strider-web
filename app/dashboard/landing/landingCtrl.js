@@ -2,9 +2,13 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('LandingCtrls', [])
-    .controller('LandingCtrl', ['$scope',
-      function($scope) {
+    .controller('LandingCtrl', ['$scope', 'UserOrgs',
+      function($scope, UserOrgs) {
         console.log("Landing Controller");
+
+        $scope.organisations = UserOrgs.query({
+          id: 'me'
+        });
       }
     ]);
 });

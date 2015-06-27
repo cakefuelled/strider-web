@@ -2,10 +2,14 @@
   <div class="col-md-4 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-bar-chart"></i> Cool metrics
+        <i class="fa fa-bar-chart"></i> Organisations
       </div>
       <div class="panel-body">
-        Everything is going well
+        <ul>
+          <li ng-repeat="org in organisations">
+            {{org.name}}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
