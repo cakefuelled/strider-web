@@ -13,15 +13,17 @@ define(['angular'], function(angular) {
 
         console.log($scope.Org);
 
-        $scope.showNewItemForm = $modal.open({
-          templateUrl: 'app/organisations/dashboard/items/new/newItem.html',
-          controller: 'NewItemCtrl',
-          resolve: {
-            orgId: function() {
-              return $scope.Org.id;
+        $scope.showNewItemForm = function() {
+          $modal.open({
+            templateUrl: 'app/organisations/dashboard/items/new/newItem.html',
+            controller: 'NewItemCtrl',
+            resolve: {
+              orgId: function() {
+                return $scope.Org.id;
+              }
             }
-          }
-        });
+          });
+        }
         
       }
     ]);
