@@ -133,8 +133,8 @@ module.exports = function(grunt) {
     },
     watch: {
       sass: {
-        files: 'resources/sass/**/*.scss',
-        tasks: 'sass'
+        files: 'app/resources/sass/**/*.scss',
+        tasks: 'sass:dev'
       }
     }
   });

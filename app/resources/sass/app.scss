@@ -2,16 +2,18 @@
  * Strider
  * Main Sass file
  */
+// Libraries (files that just contain variables/mixins)
+@import "libraries/variables";
+
 // Load vendor CSS (we proxy their files from bower_components to vendor)
 @import "vendor/bootstrap";
 
-// Libraries (files that just contain variables/mixins)
-@import "libraries/variables";
 @import "libraries/blur";
 
 // Custom components
 @import "components/form_signin";
 @import "components/breadcrumbs";
+@import "components/panel-stats";
 @import "components/sidebar";
 @import "components/navbar";
 
