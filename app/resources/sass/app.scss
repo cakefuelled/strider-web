@@ -1,0 +1,16 @@
+/**
+ * Strider
+ * Main Sass file
+ */
+@import "vendor/bootstrap";
+
+@import "libraries/variables";
+
+@import "components/form_signin";
+@import "components/breadcrumbs";
+@import "components/sidebar";
+@import "components/navbar";
+
+@import "libraries/blur";
+
+@import "sections/html";

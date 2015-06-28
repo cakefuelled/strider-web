@@ -7,6 +7,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-ng-constant');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     bowerRequirejs: {
@@ -16,7 +18,7 @@ module.exports = function(grunt) {
     },
     clean: {
       build: {
-        src: ["build"]
+        src: ["build", 'assets/css']
       }
     },
     ngconstant: {
@@ -84,8 +86,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: [
-              'bower_components/bootstrap/dist/css/*',
-              'bower_components/bootstrap/dist/fonts/*',
+              'bower_components/bootstrap-sass/assets/stylesheets/*',
+              'bower_components/bootstrap-sass/assets/fonts/*',
               'bower_components/sweetalert/lib/sweet-alert.css',
               'bower_components/animate.css/animate.min.css',
               'bower_components/components-font-awesome/css/font-awesome.min.css',
@@ -103,18 +105,50 @@ module.exports = function(grunt) {
         ],
       },
     },
+    // This is for Ruby-based SASS compilation
+    sass: {
+      dev: { // Target
+        options: { // Target options
+          style: 'expanded',
+          trace: true
+        },
+        files: { // Dictionary of files
+          'app/assets/css/app.css': 'app/resources/sass/app.scss' // 'destination': 'source'
+        }
+      },
+      dist: { // Target
+        options: { // Target options
+          style: 'compressed'
+        },
+        files: { // Dictionary of files
+          'app/assets/css/app.css': 'app/resources/sass/app.scss' // 'destination': 'source'
+        }
+      }
+    },
     'gh-pages': {
       options: {
         base: 'build'
       },
       src: ['**']
+    },
+    watch: {
+      sass: {
+        files: 'resources/sass/**/*.scss',
+        tasks: 'sass'
+      }
     }
   });
 
   grunt.registerTask('default', ['bowerRequirejs']);
 
+  grunt.registerTask('sass-watch', [
+    'sass:dev',
+    'watch'
+  ]);
+
   grunt.registerTask('build', [
     'clean',
+    'sass:dev',
     'ngconstant:build',
     'requirejs',
     'string-replace',
@@ -123,6 +157,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     'clean',
+    'sass:dist',
     'ngconstant:deploy',
     'requirejs',
     'string-replace',

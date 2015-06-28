@@ -48,7 +48,7 @@ requirejs.config({
         'ladda'
       ]
     },
-    bootstrap: {
+    'bootstrap-sass': {
       deps: [
         'jquery'
       ]
@@ -69,7 +69,6 @@ requirejs.config({
     requirejs: '../bower_components/requirejs/require',
     angular: '../bower_components/angular/angular',
     'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls',
-    bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
     'angular-loader': '../bower_components/angular-loader/angular-loader',
     'angular-route': '../bower_components/angular-route/angular-route',
     almond: '../bower_components/almond/almond',
@@ -86,7 +85,9 @@ requirejs.config({
     spin: '../bower_components/spin.js/spin',
     'angular-ladda': '../bower_components/angular-ladda/dist/angular-ladda.min',
     'blueimp-md5': '../bower_components/blueimp-md5/js/md5',
-    'angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage'
+    'angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
+    'a0-angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
+    'bootstrap-sass': '../bower_components/bootstrap-sass/assets/javascripts/bootstrap'
   },
   packages: [
 
