@@ -7326,6 +7326,17 @@ button.close {
     display: none !important;
   }
 }
+.no-blur {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  transition: filter 10s;
+  -webkit-transition: filter 10s;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+}
+
 #loginView {
   position: absolute;
   display: none;
@@ -7437,17 +7448,6 @@ button.close {
 
 .navbar-inverse .navbar-brand:hover {
   background: inherit;
-}
-
-.no-blur {
-  filter: blur(0px);
-  -webkit-filter: blur(0px);
-  transition: filter 10s;
-  -webkit-transition: filter 10s;
-}
-
-.blur {
-  -webkit-filter: blur(5px);
 }
 
 html, body {
