@@ -18,8 +18,8 @@ define(['angular'], function(angular) {
             templateUrl: 'app/organisations/dashboard/items/new/newItem.html',
             controller: 'NewItemCtrl',
             resolve: {
-              orgId: function() {
-                return $scope.Org.id;
+              Org: function() {
+                return $scope.Org;
               }
             }
           });
