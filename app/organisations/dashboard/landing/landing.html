@@ -59,3 +59,24 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-4 col-sm-4">
+    <div class="panel panel-stats">
+      <div class="panel-heading">
+        <i class="fa fa-tag"> Categories</i>
+      </div>
+      <div class="panel-body">
+        <h1>
+          {{counts.categories.count}} 
+          <small>
+            <ng-pluralize count="counts.categories.count"
+                 when="{'0': 'categories',
+                     'one': 'category',
+                     'other': 'categories'}">
+            </ng-pluralize>
+          </small>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>

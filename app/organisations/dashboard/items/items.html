@@ -11,12 +11,12 @@
       <div class="panel-body">
         <table class="table table-condensed table-striped" ng-show="items.length > 0">
           <tr>
-            <th>Type</th>
-            <th>Location</th>
+            <th>Id</th>
+            <th>Alt Ids</th>
           </tr>
           <tr ng-repeat="item in items">
-            <td>{{item.type}}</td>
-            <td>{{item.location}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.altIds}}</td>
           </tr>
         </table>
         <div class="alert alert-info" ng-show="items.length < 1">

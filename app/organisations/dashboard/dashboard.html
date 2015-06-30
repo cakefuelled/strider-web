@@ -21,7 +21,7 @@
     </div>
   </div>
 </nav>
-<div class="" style="background: #efefef">
+<div class="expand-height" style="background: #efefef">
   <!-- Sidebar -->
   <div class="col-md-2 col-sm-2 expand-height sidebar">
     <div class="row">
@@ -38,6 +38,9 @@
         <a ui-sref="orgs.dashboard.users" ui-sref-active="active" class="list-group-item">
           <i class="fa fa-fw fa-users"></i> Users
         </a>
+        <a ui-sref="orgs.dashboard.categories" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-tag"></i> Categories
+        </a>
       </div>
     </div>
     <div style="position:absolute; bottom:15px; width:100%; text-align:center">
@@ -45,7 +48,7 @@
     </div>
   </div>
   <!-- Main content -->
-  <div class="col-md-10 col-sm-10">
+  <div class="col-md-10 col-sm-10 expand-height">
     <ui-breadcrumbs displayname-property="data.displayName" abstract-proxy-property="data.breadcrumbProxy" template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
     </ui-breadcrumbs>
     <div ui-view="content"></div>

@@ -1,0 +1,20 @@
+.panel-stats{
+  background: transparent;
+  border:solid 1px $brand-info;
+
+  .panel-heading{
+    background-color: $brand-info;
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    color: #fff;
+    border-radius: 3px;
+  }
+
+  .panel-body{
+    text-align:center;
+
+    h1{
+      color: $brand-primary;
+    }
+  }
+}

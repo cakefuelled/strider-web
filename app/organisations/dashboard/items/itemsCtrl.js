@@ -10,10 +10,9 @@ define(['angular'], function(angular) {
         console.log('org', $scope.Org);
 
 
-        // $scope.items = Items.query({
-        //   org: 'testOrg'
-        // });
-        // 
+        $scope.items = Items.query({
+          org: $scope.Org.id
+        });
         
       }
     ]);
