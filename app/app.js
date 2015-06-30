@@ -23,6 +23,7 @@ define([
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
+  'organisations/dashboard/items/scan/scanCtrl',
   'organisations/dashboard/users/usersService',
   'organisations/dashboard/users/userCtrl',
   'organisations/dashboard/locations/locationsCtrl',
@@ -158,6 +159,18 @@ define([
               }
             }
           })
+          .state('orgs.dashboard.items.scan', {
+            url: '/scan',
+            data: {
+              displayName: 'Scan Item'
+            },
+            views: {
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/items/scan/scan.html',
+                controller: 'ScanCtrl'
+              }
+            }
+          })
           .state('orgs.dashboard.locations', {
             url: '/locations',
             data: {
@@ -211,7 +224,7 @@ define([
         // Check if url includes #/ https://gist.github.com/aurbano/59a7ed66078d95fcaa9f
         if (window.location.hash.length < 1 || window.location.hash === '') {
           console.log("Added hashbang");
-          window.location = window.location.origin + window.location.pathname + '#/org' + window.location.search;
+          window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
         }
       }
     ]);

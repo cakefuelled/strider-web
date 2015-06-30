@@ -27,5 +27,7 @@ node_modules
 
 bower_components
 
+.sass-cache
+
 # Users Environment Variables
 .lock-wscript
