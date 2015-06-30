@@ -37,6 +37,7 @@ define([
   'organisations/dashboard/categories/categoriesCtrl',
   'organisations/dashboard/categories/categoriesService',
   'organisations/dashboard/categories/new/newCategoryCtrl',
+  'organisations/dashboard/categories/edit/editCategoryCtrl',
   // Signup
   'sign-up/signUpCtrl',
   // Resources

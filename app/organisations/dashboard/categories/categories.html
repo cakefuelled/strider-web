@@ -12,13 +12,13 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Color</th>
+            <th>Colour</th>
             <th>Icon</th>
           </tr>
           <tr ng-repeat="cat in categories">
-            <td>{{cat.name}}</td>
+            <td><a ng-click="showEditCategoryForm(cat)">{{cat.name}}</a></td>
             <td>{{cat.description}}</td>
-            <td>{{cat.color}}</td>
+            <td>{{cat.colour}}</td>
             <td>{{cat.icon}}</td>
           </tr>
         </table>
