@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-tag"></i> Categories
+        <span class="pull-right">
+          <a class="btn btn-xs btn-default" ng-click="showNewCategoryForm()">New Category</a>
+        </span>
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed table-striped" ng-show="categories.length > 0">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Color</th>
+            <th>Icon</th>
+          </tr>
+          <tr ng-repeat="cat in categories">
+            <td>{{cat.name}}</td>
+            <td>{{cat.description}}</td>
+            <td>{{cat.color}}</td>
+            <td>{{cat.icon}}</td>
+          </tr>
+        </table>
+        <div class="alert alert-info" ng-show="categories.length < 1">
+          <i class="fa fa-warning"></i> No categories available
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

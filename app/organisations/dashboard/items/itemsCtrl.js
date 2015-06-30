@@ -23,8 +23,7 @@ define(['angular'], function(angular) {
               }
             }
           });
-        }
-        
+        }        
       }
     ]);
 });

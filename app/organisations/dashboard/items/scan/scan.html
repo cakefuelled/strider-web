@@ -1,3 +1,17 @@
 <h3>Scan items</h3>
 
-<textarea class="form-control" ng-model="scan"></textarea>
+<div>
+  <p>Type: {{scan.type}}</p>
+  <p>Id: {{scan.id}}</p>
+</div>
+
+<div style="position:absolute; border-top:5px dashed #ccc; bottom:0; left:0; width:100%">
+  <textarea ng-focus="scan.focused = true" ng-blur="scan.focused = false" style="width:100%; height:200px;" class="form-transparent" ng-model="scan.code" ng-model-options="{ debounce: 100 }"></textarea>
+  
+  <span style="position:absolute; color:#999; width:100%; text-align:center; top:80px; font-size:2em;"
+        ng-class="{'text-muted' : scan.focused}">
+    <span ng-show="!scan.focused" class="blink">Place cursor here to scan</span>
+    <span ng-show="scan.focused && !scan.loading">Waiting for scan</span>
+    <span ng-show="scan.focused && scan.loading">Processing...</span>
+  </span>
+</div>

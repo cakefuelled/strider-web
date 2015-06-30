@@ -20,16 +20,22 @@ define([
   'constants',
   // Dashboard
   'organisations/organisationsCtrl',
+  'organisations/dashboard/landing/landingCtrl',
+  'organisations/dashboard/dashboardCtrl',
+  // Dashboard -> Items
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
   'organisations/dashboard/items/scan/scanCtrl',
+  // Dashboard -> Users
   'organisations/dashboard/users/usersService',
   'organisations/dashboard/users/userCtrl',
+  // Dashboard -> Locations
   'organisations/dashboard/locations/locationsCtrl',
   'organisations/dashboard/locations/locationsService',
-  'organisations/dashboard/landing/landingCtrl',
-  'organisations/dashboard/dashboardCtrl',
+  // Dashboard -> Categories
+  'organisations/dashboard/categories/categoriesCtrl',
+  'organisations/dashboard/categories/categoriesService',
   // Signup
   'sign-up/signUpCtrl',
   // Resources
@@ -59,6 +65,7 @@ define([
     'ItemsCtrls',
     'LandingCtrls',
     'LocationCtrls',
+    'CategoriesCtrls',
     'UsersCtrls',
 
     'SignUpCtrls',
@@ -66,6 +73,7 @@ define([
     'services.users',
     'services.items',
     'services.locations',
+    'services.categories',
     'services.orgUsers',
     'strider.gravatar'
   ]).
@@ -195,6 +203,18 @@ define([
               }
             }
           })
+          .state('orgs.dashboard.categories', {
+            url: '/categories',
+            data: {
+              displayName: 'Categories'
+            },
+            views: {
+              'content': {
+                templateUrl: 'app/organisations/dashboard/categories/categories.html',
+                controller: 'CategoryCtrl'
+              }
+            }
+          })
           .state('sign-up', {
             url: '/sign-up',
             data: {},
@@ -226,6 +246,13 @@ define([
           console.log("Added hashbang");
           window.location = window.location.origin + window.location.pathname + '#/' + window.location.search;
         }
+
+        // Keep the body height
+        function resize(){
+          $('#main').height($(window).height() - $('nav').height());
+        }
+        $(window).resize(resize);
+        setTimeout(resize, 250);
       }
     ]);
 
