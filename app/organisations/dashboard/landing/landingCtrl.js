@@ -2,8 +2,8 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('LandingCtrls', [])
-    .controller('LandingCtrl', ['$scope', 'Locations', 'Items', 'OrgUsers', 'Categories',
-      function($scope, Locations, Items, OrgUsers, Categories) {
+    .controller('LandingCtrl', ['$scope', 'Locations', 'Items', 'OrgUsers', 'Category',
+      function($scope, Locations, Items, OrgUsers, Category) {
         console.log("Landing Controller");
 
         $scope.counts = {
@@ -19,8 +19,8 @@ define(['angular'], function(angular) {
             org: $scope.Org.id,
             id: 'count'
           }),
-          categories: Categories.get({
-            org: $scope.Org.id,
+          categories: Category.get({
+            orgId: $scope.Org.id,
             id: 'count'
           })
         };
