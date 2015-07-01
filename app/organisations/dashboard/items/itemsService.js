@@ -4,12 +4,16 @@ define(['angular'], function(angular) {
   angular.module('services.items', [])
     .factory('Item', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'organisations/:orgId/items/:id');
+        return $resource(apiUrl + 'organisations/:orgId/items/:id', null, {
+          update: {
+            method: 'GET'
+          }
+        });
       }
     ])
     .factory('ItemCategory', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'organisations/:orgId/items/:itemId/categories/:id');
+        return $resource(apiUrl + 'ItemCategories');
       }
     ]);
 });

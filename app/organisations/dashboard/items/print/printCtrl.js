@@ -2,8 +2,8 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('PrintCtrls', [])
-    .controller('PrintCtrl', ['$scope', '$http', 'apiUrl', 'Items', '$stateParams', 'Organisations', '$timeout',
-      function($scope, $http, apiUrl, Items, $stateParams, Organisations, $timeout) {
+    .controller('PrintCtrl', ['$scope', '$http', 'apiUrl', 'Item', '$stateParams', 'Organisations', '$timeout',
+      function($scope, $http, apiUrl, Item, $stateParams, Organisations, $timeout) {
         console.log("Print controller");
 
         $scope.Org = Organisations.findOne({
@@ -28,7 +28,7 @@ define(['angular'], function(angular) {
         $scope.reloadItems = function(increase){
           $scope.printPage += increase;
           $scope.printPage = Math.max(0, $scope.printPage);
-          $scope.items = Items.query({
+          $scope.items = Item.query({
             orgId: $scope.Org.id,
             'filter[limit]': 21,
             'filter[skip]': 21 * $scope.printPage
