@@ -1,11 +1,22 @@
 <h3>Scan items</h3>
 
-<div id="qrcode"></div>
+<div id="itemqr"></div>
 
 <div>
   <p>Type: {{scan.type}}</p>
   <p>Id: {{scan.id}}</p>
+  <p>Categories:</p>
+  <div ng-repeat="category in categories">
+    <p>{{category}}</p>
+  </div>
+  <p>Unidentified:</p>
+  <div ng-repeat="unidentified in unidentifieds">
+    <p>{{unidentified.type}} {{unidentified.id}}</p>
+  </div>
 </div>
+
+<p>SCAN TO SAVE</p>
+<div id="saveqr"></div>
 
 <div style="position:absolute; z-index:1; border-top:5px dashed #ccc; bottom:0; left:0; width:100%">
   <textarea ng-focus="scan.focused = true" ng-blur="scan.focused = false" style="width:100%; height:200px; position:relative; z-index:2" class="form-transparent" ng-model="scan.code" ng-model-options="{ debounce: 100 }"></textarea>
