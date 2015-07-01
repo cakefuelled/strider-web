@@ -14,6 +14,8 @@ define(['angular'], function(angular) {
           loading: false
         };
 
+        var qrcode = new QRCode('qrcode');
+
         $scope.$watch('scan.code', function(val){
           var protocol = 'striderÑ--',
               divider = '-';
@@ -28,6 +30,8 @@ define(['angular'], function(angular) {
 
           $scope.scan.type = parts[0];
           $scope.scan.id = parts[1];
+
+          qrcode.makeCode('strider://'+$scope.scan.type+'/'+$scope.scan.id);
 
           $scope.scan.code = '';
 

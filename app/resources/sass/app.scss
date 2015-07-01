@@ -11,14 +11,15 @@
 @import "libraries/blur";
 
 // Custom components
-@import "components/form_signin";
-@import "components/form_styles";
+@import "components/form-signin";
+@import "components/form-styles";
 @import "components/breadcrumbs";
 @import "components/panel-stats";
+@import "components/qr-code";
 @import "components/sidebar";
 @import "components/navbar";
 // Animations
-@import "components/animation_blink";
+@import "components/animation-blink";
 
 // Section specific CSS
 @import "sections/html";

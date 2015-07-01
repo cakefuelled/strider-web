@@ -62,6 +62,9 @@ requirejs.config({
       deps: [
         'angular'
       ]
+    },
+    'qrcodejs': {
+      exports: 'QRCode'
     }
   },
   paths: {
@@ -87,7 +90,8 @@ requirejs.config({
     'blueimp-md5': '../bower_components/blueimp-md5/js/md5',
     'angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
     'a0-angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
-    'bootstrap-sass': '../bower_components/bootstrap-sass/assets/javascripts/bootstrap'
+    'bootstrap-sass': '../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
+    'qrcodejs': '../app/resources/js-non-bower/qrcode'
   },
   packages: [
 

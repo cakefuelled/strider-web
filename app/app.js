@@ -7,13 +7,14 @@
 define([
   // Package deps
   'angular',
+  'qrcodejs',
   'ui-router',
   'angular-ladda',
   'angular-storage',
   'angular-resource',
   'angular-bootstrap',
-  'angular-loading-bar',
   'angular-http-auth',
+  'angular-loading-bar',
   'angular-auth-interceptor',
   'angular-utils-ui-breadcrumbs',
   // App deps

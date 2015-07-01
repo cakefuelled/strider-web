@@ -7412,6 +7412,11 @@ button.close {
   color: #3680E9;
 }
 
+.qr-code.qr-code-small img {
+  max-width: 75px;
+  max-height: 75px;
+}
+
 .sidebar {
   background: #333;
   color: #efefef;
