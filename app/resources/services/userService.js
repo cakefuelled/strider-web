@@ -21,7 +21,11 @@ define(['angular'], function(angular) {
     ])
     .service('UserOrgs', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'users/:id/organisations/:orgId', {id: 'me'});
+        return $resource(apiUrl + 'users/:id/organisations/:orgId', {id: 'me'},{
+          findOne: {
+            method: 'GET'
+          }
+        });
       }
     ]);
 });

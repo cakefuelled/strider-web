@@ -136,6 +136,9 @@ define([
                       return;
                     }
                     deferred.resolve(org);
+                  }, function(err){
+                    $state.go('orgs');
+                    return;
                   });
 
                   return deferred.promise;

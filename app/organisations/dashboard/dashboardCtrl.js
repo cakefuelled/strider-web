@@ -7,22 +7,6 @@ define(['angular', 'md5'], function(angular, md5) {
         console.log("Dashboard Controller");
 
         $scope.Org = Org;
-        // var orgs = UserOrgs.query();
-
-        // orgs.$promise.then(function(data){
-        //   // Resolve the org object
-        //   var total = data.length;
-        //   for(var i = 0; i < total; i++){
-        //     if(data[i].path === $stateParams.organisation){
-        //       $scope.org = data[i];
-        //       break;
-        //     }
-        //   }
-        //   if($scope.org === null){
-        //     $state.go('orgs');
-        //     return;
-        //   }
-        // });
 
         function getCurrentUser() {
           $scope.user = User.get({
@@ -30,6 +14,12 @@ define(['angular', 'md5'], function(angular, md5) {
           }, function(data) {
             data.md5 = md5(data.email);
             return data;
+          }, function(err) {
+            console.log(err);
+            if (err.status === 404) {
+              // User not logged in
+              $scope.$broadcast('event:auth-loginRequired', {});
+            }
           });
         }
         getCurrentUser();

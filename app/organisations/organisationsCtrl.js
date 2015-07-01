@@ -9,6 +9,15 @@ define(['angular'], function(angular) {
         $scope.organisations = UserOrgs.query({
           id: 'me'
         });
+
+        $scope.organisations.$promise.then(function(){}, function(err){
+          console.log(err);
+          if(err.status === 404){
+            console.log('broadcasting event');
+            // User not logged in
+            $scope.$emit('event:auth-loginRequired',{});
+          }
+        });
       }
     ]);
 });
