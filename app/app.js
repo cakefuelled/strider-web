@@ -28,6 +28,7 @@ define([
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
   'organisations/dashboard/items/scan/scanCtrl',
+  'organisations/dashboard/items/print/printCtrl',
   // Dashboard -> Users
   'organisations/dashboard/users/usersService',
   'organisations/dashboard/users/userCtrl',
@@ -66,6 +67,7 @@ define([
     'OrganisationCtrls',
     'DashboardCtrls',
     'ItemsCtrls',
+    'PrintCtrls',
     'LandingCtrls',
     'LocationCtrls',
     'CategoriesCtrls',
@@ -167,6 +169,16 @@ define([
               'content@orgs.dashboard': {
                 templateUrl: 'app/organisations/dashboard/items/new/new.html',
                 controller: 'NewItemCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.items.print', {
+            url: '/print',
+            data: {},
+            views: {
+              'main@': {
+                templateUrl: 'app/organisations/dashboard/items/print/print.html',
+                controller: 'PrintCtrl'
               }
             }
           })
