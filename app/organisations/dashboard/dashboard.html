@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Strider - <b>{{Org.name}}</b>
+      </a>
+    </div>
+    <div class="navbar-text navbar-right" style="margin:13px 15px 5px 0">
+      <span class="dropdown" dropdown>
+        <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
+          <img gravatar email-hash="{{user.md5}}"  style="max-height:2em; max-width:2em" class="img img-circle"> {{user.name || user.email}} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href=""><i class="fa fa-user"></i> My profile</a></li>
+          <li><a href=""><i class="fa fa-gear"></i> Settings</a></li>
+          <li><a ui-sref="orgs"><i class="fa fa-building-o"></i> Organizations</a></li>
+          <li class="divider"></li>
+          <li><a href="" ng-click="$event.preventDefault(); logout()"><i class="fa fa-sign-out"></i> Log out</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+</nav>
+<div class="expand-height" style="background: #efefef">
+  <!-- Sidebar -->
+  <div class="col-md-2 col-sm-2 expand-height sidebar">
+    <div class="row">
+      <div class="list-group">
+        <a ui-sref="orgs.dashboard.landing" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-tachometer"></i> Dashboard
+        </a>
+        <a ui-sref="orgs.dashboard.items" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-list-alt"></i> Items
+        </a>
+        <a ui-sref="orgs.dashboard.locations" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-map-marker"></i> Locations
+        </a>
+        <a ui-sref="orgs.dashboard.users" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-users"></i> Users
+        </a>
+        <a ui-sref="orgs.dashboard.categories" ui-sref-active="active" class="list-group-item">
+          <i class="fa fa-fw fa-tag"></i> Categories
+        </a>
+      </div>
+    </div>
+    <div style="position:absolute; bottom:15px; width:100%; text-align:center">
+      &copy; Strider
+    </div>
+  </div>
+  <!-- Main content -->
+  <div class="col-md-10 col-sm-10 expand-height">
+    <ui-breadcrumbs displayname-property="data.displayName" abstract-proxy-property="data.breadcrumbProxy" template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html">
+    </ui-breadcrumbs>
+    <div ui-view="content"></div>
+  </div>
+</div>

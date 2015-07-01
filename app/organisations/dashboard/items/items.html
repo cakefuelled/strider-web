@@ -4,18 +4,20 @@
       <div class="panel-heading">
         <i class="fa fa-bar-chart"></i> Items
         <span class="pull-right">
-          <a ui-sref="dashboard.items.new">New item</a>
+          <a class="btn btn-xs btn-default" ui-sref="orgs.dashboard.items.scan">Scan items</a>
+          <a class="btn btn-xs btn-default" ng-click="showNewItemForm()">New item</a>
+          <a class="btn btn-xs btn-default" ui-sref="orgs.dashboard.items.print">Print labels</a>
         </span>
       </div>
       <div class="panel-body">
         <table class="table table-condensed table-striped" ng-show="items.length > 0">
           <tr>
-            <th>Type</th>
-            <th>Location</th>
+            <th>Id</th>
+            <th>Alt Ids</th>
           </tr>
           <tr ng-repeat="item in items">
-            <td>{{item.type}}</td>
-            <td>{{item.location}}</td>
+            <td><a ng-click="showEditItemForm(item)">{{item.id}}</a></td>
+            <td>{{item.altIds}}</td>
           </tr>
         </table>
         <div class="alert alert-info" ng-show="items.length < 1">

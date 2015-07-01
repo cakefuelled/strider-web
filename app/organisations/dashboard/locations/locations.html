@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart"></i> Locations
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed table-striped" ng-show="locations.length > 0">
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Postcode</th>
+          </tr>
+          <tr ng-repeat="loc in locations">
+            <td>{{loc.name}}</td>
+            <td>{{loc.address}}</td>
+            <td>{{loc.postcode}}</td>
+          </tr>
+        </table>
+        <div class="alert alert-info" ng-show="locations.length < 1">
+          <i class="fa fa-warning"></i> No locations available
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
