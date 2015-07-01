@@ -38,8 +38,8 @@ define(['angular'], function(angular) {
           saveqr = new QRCode('saveqr', qrSettings);
 
         $scope.$watch('scan.code', function(val) {
-          var protocol = 'httpÑ--',
-            divider = '-';
+          var protocol = 'http://',
+            divider = '/';
 
           saveqr.makeCode('http://internal/save/0');
 
