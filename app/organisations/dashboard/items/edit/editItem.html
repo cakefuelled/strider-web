@@ -1,0 +1,19 @@
+<form class="form-horizontal" role="form">
+    <div class="modal-header">
+        <h3 class="modal-title">Edit Item</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="id">Id:</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="item.id" class="form-control" id="id" disabled>
+            </div>
+        </div>
+        <div id="qrcode"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-danger" ng-click="delete()">Delete</button>
+        <button class="btn btn-primary" ng-click="submit()">Save</button>
+    </div>
+</form>

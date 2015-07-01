@@ -30,6 +30,7 @@ define([
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
+  'organisations/dashboard/items/edit/editItemCtrl',
   'organisations/dashboard/items/scan/scanCtrl',
   'organisations/dashboard/items/print/printCtrl',
   // Dashboard -> Users
