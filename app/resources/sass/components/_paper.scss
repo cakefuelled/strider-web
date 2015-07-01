@@ -1,0 +1,35 @@
+@page{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    margin: 0mm;  
+} 
+.paper-a4 {
+  height: 297mm;
+  width: 210mm;
+  margin:0 auto;
+  border:1px solid #ccc;
+  background:#fff;
+  padding: 14mm 7mm;
+}
+.label-l7160{
+  width: 63.5mm;
+  height: 38.1mm;
+  background:#efefef;
+  margin-right:1mm;
+  display:inline-block;
+  border-radius:2mm;
+  overflow:hidden;
+}
+.label-l7160:last-child{
+  margin-right:0;
+}
+.stripes-right{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJUlEQVQIW2NkYGD4z8DAwMiABGAcFAlkFXAJFG0wo9AFQSb/BwAAogUFtaY3XQAAAABJRU5ErkJggg==) repeat;
+}
+.stripes-left{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJElEQVQIW2NkwAT/GdHE/jMwMDAiC4IFQIpggnABmCCKAEgQAABOBQW5VNBHAAAAAElFTkSuQmCC) repeat;
+}
+.stripes-down{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAFUlEQVQIW2NkYGD4z8DAwMgAJbBzAEJpAwRLOlTyAAAAAElFTkSuQmCC) repeat;
+}
