@@ -6,5 +6,10 @@ define(['angular'], function(angular) {
       function($resource, apiUrl) {
         return $resource(apiUrl + 'organisations/:orgId/items/:id');
       }
+    ])
+    .factory('ItemCategory', ['$resource', 'apiUrl',
+      function($resource, apiUrl) {
+        return $resource(apiUrl + 'organisations/:orgId/items/:itemId/categories/:id');
+      }
     ]);
 });

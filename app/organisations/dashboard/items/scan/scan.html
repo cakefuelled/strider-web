@@ -6,8 +6,8 @@
   <p>Type: {{scan.type}}</p>
   <p>Id: {{scan.id}}</p>
   <p>Categories:</p>
-  <div ng-repeat="category in categories">
-    <p>{{category}}</p>
+  <div ng-repeat="itemCategory in itemCategories">
+    <p>{{itemCategory.categoryId}}</p>
   </div>
   <p>Unidentified:</p>
   <div ng-repeat="unidentified in unidentifieds">

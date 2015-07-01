@@ -2,13 +2,9 @@ define(['angular'], function(angular) {
   'use strict';
   
   angular.module('ItemsCtrls')
-    .controller('ScanCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category',
-      function($scope, $http, $timeout, apiUrl, Item, Category) {
+    .controller('ScanCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory',
+      function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory) {
         console.log("Scan controller");
-
-        $scope.categories = Category.query({
-          orgId: $scope.Org.id
-        });
 
         $scope.scan = {
           focused: false,
@@ -18,7 +14,7 @@ define(['angular'], function(angular) {
           loading: false
         };
 
-        $scope.categories = [];
+        $scope.itemCategories = [];
         $scope.unidentifieds = [];
 
         var itemqr = new QRCode('itemqr');
@@ -48,7 +44,7 @@ define(['angular'], function(angular) {
               $scope.addCategory(scannedId);
               break;
             case 'save':
-              $scope.saveItem();
+              $scope.updateItem();
             default:
               $scope.addUnidentified(scannedType, scannedId);
           }
@@ -77,7 +73,11 @@ define(['angular'], function(angular) {
               id: categoryId
             }, function(category) {
               //Add the category to the item
-              $scope.item.categories.push(category);
+              var newItemCategory = new ItemCategory(
+              { 
+                categoryId: category.id 
+              });
+              $scope.itemCategories.push(newItemCategory);
             });
           }
         }
@@ -87,7 +87,16 @@ define(['angular'], function(angular) {
             orgId: $scope.Org.id,
             id: $scope.item.id
           }, function(item) {
-            alert('Success!');
+            for(itemCategory in $scope.itemCategories) {
+              itemCategory.$save({
+                orgId: Org.id,
+                itemId: $scope.item.id
+              }, function(newCategory) {
+                alert('yay');
+              }, function(err) {
+                alert(err);
+              });
+            }
           }, function(err) {
             alert(err);
           });
