@@ -63,8 +63,12 @@ requirejs.config({
         'angular'
       ]
     },
-    'qrcodejs': {
+    qrcodejs: {
       exports: 'QRCode'
+    },
+    jsbarcode: {
+      deps: ['jquery'],
+      exports: 'JsBarcode'
     }
   },
   paths: {
@@ -91,7 +95,9 @@ requirejs.config({
     'angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
     'a0-angular-storage': '../bower_components/a0-angular-storage/dist/angular-storage',
     'bootstrap-sass': '../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
-    'qrcodejs': '../app/resources/js-non-bower/qrcode'
+    qrcodejs: '../app/resources/js-non-bower/qrcode',
+    jsbarcode: '../bower_components/jsbarcode/JsBarcode',
+    jsbarcode_code128: '../bower_components/jsbarcode/CODE128'
   },
   packages: [
 

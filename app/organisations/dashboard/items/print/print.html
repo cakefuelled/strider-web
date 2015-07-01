@@ -1,24 +1,52 @@
-<div class="paper-a4">
-  <div class="label-row">
-    <div class="label-l7160 stripes-right">
-      This is a label inside the page
+<div class="no-print panel panel-default" style="position:absolute; top:10%; left:0; width:250px; z-index:2">
+  <div class="panel-body">
+    <h2>Label Printer</h2>
+    <div class="form-group">
+      <label><i class="fa fa-print"></i> Printing Page <b>{{printPage}}</b></label>
+      <div style="margin-top:15px">
+        <a class="btn btn-default btn-sm" ng-click="reloadItems(-1)">
+          <i class="fa fa-caret-left"></i> Previous page
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="reloadItems(1)">
+          Next page <i class="fa fa-caret-right"></i>
+        </a>
+      </div>
     </div>
-    <div class="label-l7160 stripes-down">
-      This is a label inside the page
-    </div>
-    <div class="label-l7160 stripes-left">
-      This is a label inside the page
-    </div>
+    <div style="margin-top:15px">
+    <a ui-sref="orgs.dashboard.items">Back</a>
   </div>
-  <div class="label-row">
-    <div class="label-l7160 stripes-down">
-      This is a label inside the page
+  </div>
+</div>
+<div class="paper-a4">
+  <div ng-repeat="item in items" ng-if="$index % 3 === 0" class="label-row">
+    <div class="label-l7160" ng-if="items[$index]">
+      <div class="label-qr" id="qr-item{{items[$index].id}}"></div>
+      <div class="label-vertical">
+        Property of
+        <br>
+        <b>Aimar Foundation</b>
+        <img id="barcode-item{{items[$index].id}}" src="" />
+      </div>
     </div>
-    <div class="label-l7160 stripes-left">
-      This is a label inside the page
+
+    <div class="label-l7160" ng-if="items[$index+1]">
+      <div class="label-qr" id="qr-item{{items[$index+1].id}}"></div>
+      <div class="label-vertical">
+        Property of
+        <br>
+        <b>Aimar Foundation</b>
+        <img id="barcode-item{{items[$index+1].id}}" src="" />
+      </div>
     </div>
-    <div class="label-l7160 stripes-right">
-      This is a label inside the page
+
+    <div class="label-l7160" ng-if="items[$index+2]">
+      <div class="label-qr" id="qr-item{{items[$index+2].id}}"></div>
+      <div class="label-vertical">
+        Property of
+        <br>
+        <b>Aimar Foundation</b>
+        <img id="barcode-item{{items[$index+2].id}}" src="" />
+      </div>
     </div>
   </div>
 </div>

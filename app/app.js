@@ -8,6 +8,8 @@ define([
   // Package deps
   'angular',
   'qrcodejs',
+  'jsbarcode',
+  'jsbarcode_code128',
   'ui-router',
   'angular-ladda',
   'angular-storage',
@@ -21,6 +23,7 @@ define([
   'constants',
   // Dashboard
   'organisations/organisationsCtrl',
+  'organisations/organisationsService',
   'organisations/dashboard/landing/landingCtrl',
   'organisations/dashboard/dashboardCtrl',
   // Dashboard -> Items
@@ -79,6 +82,7 @@ define([
     'services.items',
     'services.locations',
     'services.categories',
+    'services.organisations',
     'services.orgUsers',
     'strider.gravatar'
   ]).
