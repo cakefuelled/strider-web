@@ -8,7 +8,7 @@ define(['angular'], function(angular) {
 
         $scope.counts = {
           items: Items.get({
-            org: $scope.Org.id,
+            orgId: $scope.Org.id,
             id: 'count'
           }),
           locations: Locations.get({

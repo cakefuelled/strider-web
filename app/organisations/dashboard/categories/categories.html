@@ -3,19 +3,22 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <i class="fa fa-tag"></i> Categories
+        <span class="pull-right">
+          <a class="btn btn-xs btn-default" ng-click="showNewCategoryForm()">New Category</a>
+        </span>
       </div>
       <div class="panel-body">
         <table class="table table-condensed table-striped" ng-show="categories.length > 0">
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Color</th>
+            <th>Colour</th>
             <th>Icon</th>
           </tr>
           <tr ng-repeat="cat in categories">
-            <td>{{cat.name}}</td>
+            <td><a ng-click="showEditCategoryForm(cat)">{{cat.name}}</a></td>
             <td>{{cat.description}}</td>
-            <td>{{cat.color}}</td>
+            <td>{{cat.colour}}</td>
             <td>{{cat.icon}}</td>
           </tr>
         </table>

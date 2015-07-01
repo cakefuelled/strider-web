@@ -26,7 +26,7 @@ define([
   // Dashboard -> Items
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
-  'organisations/dashboard/items/new/newCtrl',
+  'organisations/dashboard/items/new/newItemCtrl',
   'organisations/dashboard/items/scan/scanCtrl',
   // Dashboard -> Users
   'organisations/dashboard/users/usersService',
@@ -37,12 +37,14 @@ define([
   // Dashboard -> Categories
   'organisations/dashboard/categories/categoriesCtrl',
   'organisations/dashboard/categories/categoriesService',
+  'organisations/dashboard/categories/new/newCategoryCtrl',
+  'organisations/dashboard/categories/edit/editCategoryCtrl',
   // Signup
   'sign-up/signUpCtrl',
   // Resources
   'resources/services/userService',
   'resources/directives/loginHandler',
-  'resources/directives/gravatar',
+  'resources/directives/gravatar'
 
 ], function(angular) {
   "use strict";
