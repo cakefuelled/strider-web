@@ -6,6 +6,8 @@ define(['angular'], function(angular) {
       function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q) {
         console.log("Scan controller");
 
+        $scope.savedText = false;
+
         var qrUrl = 'http://inventory.aimarfoundation.org',
           qrSettings = {
             height: 100,
@@ -145,13 +147,15 @@ define(['angular'], function(angular) {
                     }
                   );
                 });
+                $scope.savedText = true;
+                $timeout(function(){
+                  $scope.savedText = false;
+                }, 2000);
               });
             }, function() {
               $scope.itemCategories.forEach(function(itemCategory) {
                 itemCategory.$save().then(
-                  function() {
-                    alert('Item updated');
-                  },
+                  function() {},
                   function(err) {
                     alert(err.data.error.message);
                   }
