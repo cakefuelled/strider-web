@@ -97,7 +97,7 @@ define(['angular'], function(angular) {
 
             // Get its categories
             $scope.itemCategories = ItemCategory.query({
-              '[where][itemId]' : itemId 
+              'filter[where][itemId]' : itemId 
             });
           });
         }
