@@ -23,7 +23,7 @@
       </ul>
     </td>
     <td>
-      <ul ng-repeat="altid in item.altIds track by altid">
+      <ul ng-repeat="altid in item.altIds track by altid+$index">
         <li>
           {{altid}}
           <a href="" ng-click="removeItem(item.altIds, $index)">
