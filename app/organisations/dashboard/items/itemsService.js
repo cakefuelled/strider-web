@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
     ])
     .factory('ItemCategory', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'ItemCategories');
+        return $resource(apiUrl + 'ItemCategories/:id');
       }
     ]);
 });

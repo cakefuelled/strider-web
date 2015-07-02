@@ -2,8 +2,8 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('ItemsCtrls')
-    .controller('ScanCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory',
-      function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory) {
+    .controller('ScanCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q',
+      function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q) {
         console.log("Scan controller");
 
         var qrUrl = 'http://inventory.aimarfoundation.org',
@@ -84,7 +84,7 @@ define(['angular'], function(angular) {
         });
 
         $scope.showItem = function(itemId) {
-          console.log("Loading item "+itemId);
+          console.log("Loading item " + itemId);
           //Get the item from model
           $scope.item = Item.get({
             orgId: $scope.Org.id,
@@ -96,7 +96,7 @@ define(['angular'], function(angular) {
 
             // Get its categories
             $scope.itemCategories = ItemCategory.query({
-              'filter[where][itemId]' : itemId
+              'filter[where][itemId]': itemId
             });
           });
         }
@@ -123,40 +123,67 @@ define(['angular'], function(angular) {
             orgId: $scope.Org.id,
             id: $scope.item.id
           }, function(item) {
-            $scope.itemCategories.forEach(function(itemCategory){
-              itemCategory.$save().then(
-                function() {
-                  alert('Item updated');
-                }, function(err) {
-                  alert(err.data.error.message);
+            var deletePromises = [];
+            ItemCategory.query({
+              'filter[where][itemId]': item.id
+            }).$promise.then(function(data) {
+              data.forEach(function(category) {
+                if(!category){
+                  return;
                 }
-              );
+                deletePromises.push(category.$delete({
+                  id: category.id
+                }));
+              });
+
+              $q.all(deletePromises).then(function() {
+                $scope.itemCategories.forEach(function(itemCategory) {
+                  itemCategory.$save().then(
+                    function() {},
+                    function(err) {
+                      alert(err.data.error.message);
+                    }
+                  );
+                });
+              });
+            }, function() {
+              $scope.itemCategories.forEach(function(itemCategory) {
+                itemCategory.$save().then(
+                  function() {
+                    alert('Item updated');
+                  },
+                  function(err) {
+                    alert(err.data.error.message);
+                  }
+                );
+              });
             });
+
           }, function(err) {
             alert(err);
           });
         }
 
         $scope.addAltId = function(val) {
-          if(typeof($scope.item.altIds)==='undefined'){
+          if (typeof($scope.item.altIds) === 'undefined') {
             $scope.item.altIds = [];
           }
           $scope.item.altIds.push(val);
         };
 
-        $timeout(function(){
+        $timeout(function() {
           $('#scanArea').focus();
-        },100);
+        }, 100);
 
         $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/55947b2063cdbabd0de31993';
 
-        $scope.removeItem = function(list, index){
-          list.splice(index);
+        $scope.removeItem = function(list, index) {
+          list.splice(index, 1);
         };
 
-        function normalizeById(array, id){
+        function normalizeById(array, id) {
           var ret = {};
-          array.forEach(function(element){
+          array.forEach(function(element) {
             ret[element[id]] = element;
           });
 

@@ -13,7 +13,7 @@
     <td width="100"><div class="qr-code qr-code-small" id="itemqr"></div></td>
     <td>{{scan.id}}</td>
     <td>
-      <ul ng-repeat="itemCategory in itemCategories">
+      <ul ng-repeat="itemCategory in itemCategories track by $index">
         <li>
           {{categoriesById[itemCategory.categoryId].name}}
           <a href="" ng-click="removeItem(itemCategories, $index)">
@@ -23,7 +23,7 @@
       </ul>
     </td>
     <td>
-      <ul ng-repeat="altid in item.altIds">
+      <ul ng-repeat="altid in item.altIds track by altid">
         <li>
           {{altid}}
           <a href="" ng-click="removeItem(item.altIds, $index)">
