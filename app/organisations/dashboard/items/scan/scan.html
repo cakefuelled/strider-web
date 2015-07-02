@@ -6,6 +6,7 @@
       <th>QR Code</th>
       <th>ID</th>
       <th>Categories</th>
+      <th>Alternative Ids</th>
     </tr>
   </thead>
   <tr>
@@ -13,7 +14,22 @@
     <td>{{scan.id}}</td>
     <td>
       <ul ng-repeat="itemCategory in itemCategories">
-        <li>{{itemCategory.categoryId}}</li>
+        <li>
+          {{categoriesById[itemCategory.categoryId].name}}
+          <a href="" ng-click="removeItem(itemCategories, $index)">
+            <i class="fa fa-times"></i>
+          </a>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <ul ng-repeat="altid in item.altIds">
+        <li>
+          {{altid}}
+          <a href="" ng-click="removeItem(item.altIds, $index)">
+            <i class="fa fa-times"></i>
+          </a>
+        </li>
       </ul>
     </td>
   </tr>
@@ -34,7 +50,7 @@
   </div>
   <div class="panel-body">
     <div ng-repeat="category in categories" style="display:inline-block; width:100px">
-      <h4>{{category.name}}</h4>
+      <h4><a href="" ng-click="addCategory(category.id)">{{category.name}}</a></h4>
       <div class="qr-code qr-code-small" id="qr-category-{{category.id}}"></div>
     </div>
   </div>
