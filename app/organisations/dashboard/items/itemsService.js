@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
       function($resource, apiUrl) {
         return $resource(apiUrl + 'organisations/:orgId/items/:id', null, {
           update: {
-            method: 'GET'
+            method: 'PUT'
           }
         });
       }

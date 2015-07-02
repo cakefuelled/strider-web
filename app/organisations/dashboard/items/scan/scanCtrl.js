@@ -27,6 +27,7 @@ define(['angular'], function(angular) {
           orgId: $scope.Org.id
         });
         $scope.categories.$promise.then(function() {
+          $scope.categoriesById = normalizeById($scope.categories, 'id');
           $timeout(function() {
             $scope.categories.forEach(function(category) {
               new QRCode('qr-category-' + category.id, qrUrl + '/category/' + category.id, qrSettings);
@@ -57,11 +58,7 @@ define(['angular'], function(angular) {
 
           if (parts.length < 3) {
             // Not our format, do something else with it
-            if (scannedType && scannedId) {
-              $scope.addUnidentified(scannedType, scannedId);
-            } else {
-              $scope.addUnidentified('Unknown', val);
-            }
+            $scope.addAltId(val);
 
             $scope.scan.code = '';
             return;
@@ -78,7 +75,7 @@ define(['angular'], function(angular) {
               $scope.updateItem();
               break;
             default:
-              $scope.addUnidentified(scannedType, scannedId);
+              $scope.addAltId(val);
           }
 
           $scope.scan.code = '';
@@ -87,17 +84,19 @@ define(['angular'], function(angular) {
         });
 
         $scope.showItem = function(itemId) {
+          console.log("Loading item "+itemId);
           //Get the item from model
           $scope.item = Item.get({
             orgId: $scope.Org.id,
             id: itemId
           }, function(item) {
-            $scope.scan.id = itemId;
-            itemqr.makeCode(qrUrl + '/item/' + itemId);
+            console.log('   Item loaded');
+            $scope.scan.id = item.id;
+            itemqr.makeCode(qrUrl + '/item/' + item.id);
 
             // Get its categories
             $scope.itemCategories = ItemCategory.query({
-              'filter[where][itemId]' : itemId 
+              'filter[where][itemId]' : itemId
             });
           });
         }
@@ -138,16 +137,31 @@ define(['angular'], function(angular) {
           });
         }
 
-        $scope.addUnidentified = function(type, id) {
-          $scope.unidentifieds.push({
-            type: type,
-            id: id
-          });
+        $scope.addAltId = function(val) {
+          if(typeof($scope.item.altIds)==='undefined'){
+            $scope.item.altIds = [];
+          }
+          $scope.item.altIds.push(val);
         };
 
         $timeout(function(){
           $('#scanArea').focus();
         },100);
+
+        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/55947b2063cdbabd0de31993';
+
+        $scope.removeItem = function(list, index){
+          list.splice(index);
+        };
+
+        function normalizeById(array, id){
+          var ret = {};
+          array.forEach(function(element){
+            ret[element[id]] = element;
+          });
+
+          return ret;
+        }
       }
     ]);
 });
