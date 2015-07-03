@@ -39,6 +39,7 @@ define([
   // Dashboard -> Locations
   'organisations/dashboard/locations/locationsCtrl',
   'organisations/dashboard/locations/locationsService',
+  'organisations/dashboard/locations/new/newLocationCtrl',
   // Dashboard -> Categories
   'organisations/dashboard/categories/categoriesCtrl',
   'organisations/dashboard/categories/categoriesService',

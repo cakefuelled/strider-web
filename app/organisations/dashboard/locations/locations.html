@@ -3,6 +3,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <i class="fa fa-bar-chart"></i> Locations
+        <span class="pull-right">
+          <a class="btn btn-xs btn-default" ng-click="showNewLocationForm()">New Location</a>
+        </span>
       </div>
       <div class="panel-body">
         <table class="table table-condensed table-striped" ng-show="locations.length > 0">
