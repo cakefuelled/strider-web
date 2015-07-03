@@ -2,8 +2,8 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('ItemsCtrls')
-    .controller('ScanCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q',
-      function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q) {
+    .controller('EditCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q', '$stateParams',
+      function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q, $stateParams) {
         console.log("Scan controller");
 
         $scope.savedText = false;
@@ -21,6 +21,9 @@ define(['angular'], function(angular) {
           type: '',
           loading: false
         };
+
+        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/' + $stateParams.itemId;
+
 
         $scope.itemCategories = [];
         $scope.unidentifieds = [];
@@ -130,7 +133,7 @@ define(['angular'], function(angular) {
               'filter[where][itemId]': item.id
             }).$promise.then(function(data) {
               data.forEach(function(category) {
-                if(!category){
+                if (!category) {
                   return;
                 }
                 deletePromises.push(category.$delete({
@@ -148,7 +151,7 @@ define(['angular'], function(angular) {
                   );
                 });
                 $scope.savedText = true;
-                $timeout(function(){
+                $timeout(function() {
                   $scope.savedText = false;
                 }, 2000);
               });
@@ -166,7 +169,7 @@ define(['angular'], function(angular) {
           }, function(err) {
             alert(err);
           });
-        }
+        };
 
         $scope.addAltId = function(val) {
           if (typeof($scope.item.altIds) === 'undefined') {
@@ -178,8 +181,6 @@ define(['angular'], function(angular) {
         $timeout(function() {
           $('#scanArea').focus();
         }, 100);
-
-        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/55947b2063cdbabd0de31993';
 
         $scope.removeItem = function(list, index) {
           list.splice(index, 1);

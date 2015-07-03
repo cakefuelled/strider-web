@@ -4,7 +4,6 @@
       <div class="panel-heading">
         <i class="fa fa-bar-chart"></i> Items
         <span class="pull-right">
-          <a class="btn btn-xs btn-default" ui-sref="orgs.dashboard.items.scan">Scan items</a>
           <a class="btn btn-xs btn-default" ng-click="showNewItemForm()">New item</a>
           <a class="btn btn-xs btn-default" ui-sref="orgs.dashboard.items.print">Print labels</a>
         </span>
@@ -16,7 +15,7 @@
             <th>Alt Ids</th>
           </tr>
           <tr ng-repeat="item in items">
-            <td><a ng-click="showEditItemForm(item)">{{item.id}}</a></td>
+            <td><a ui-sref="orgs.dashboard.items.edit({itemId: item.id})">{{item.id}}</a></td>
             <td>{{item.altIds}}</td>
           </tr>
         </table>

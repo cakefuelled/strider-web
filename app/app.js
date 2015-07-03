@@ -30,8 +30,7 @@ define([
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
-  'organisations/dashboard/items/edit/editItemCtrl',
-  'organisations/dashboard/items/scan/scanCtrl',
+  'organisations/dashboard/items/edit/editCtrl',
   'organisations/dashboard/items/print/printCtrl',
   // Dashboard -> Users
   'organisations/dashboard/users/usersService',
@@ -191,15 +190,15 @@ define([
               }
             }
           })
-          .state('orgs.dashboard.items.scan', {
-            url: '/scan',
+          .state('orgs.dashboard.items.edit', {
+            url: '/:itemId',
             data: {
-              displayName: 'Scan Item'
+              displayName: '{{item.id}}'
             },
             views: {
               'content@orgs.dashboard': {
-                templateUrl: 'app/organisations/dashboard/items/scan/scan.html',
-                controller: 'ScanCtrl'
+                templateUrl: 'app/organisations/dashboard/items/edit/edit.html',
+                controller: 'EditCtrl'
               }
             }
           })
