@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('services.categories', [])
     .factory('Category', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
-        return $resource(apiUrl + 'organisations/:orgId/categories/:id', null, 
+      return $resource(apiUrl + 'organisations/:orgId/categories/:id', null, 
         {
           'update': { method: 'PUT' }
         });
