@@ -22,7 +22,7 @@ define(['angular'], function(angular) {
           loading: false
         };
 
-        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/' + $stateParams.itemId;
+        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/' + $stateParams.id;
 
 
         $scope.itemCategories = [];

@@ -7417,6 +7417,44 @@ button.close {
   max-height: 75px;
 }
 
+/*
+<div class="scan-area">
+        Click to scan <span class="scan-indicator bg-danger"></span>
+        <input type="text" class="scan-input">
+      </div>
+ */
+.scan-area {
+  display: inline-block;
+  width: 126px;
+  overflow: hidden;
+  position: relative;
+  background: #555555;
+  border-radius: 10px;
+  padding: 3px 10px;
+  color: #c4c4c4;
+}
+.scan-area .scan-indicator {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  display: inline-block;
+  float: right;
+  margin-top: 3px;
+}
+.scan-area .scan-indicator.scan-waiting {
+  background: #eb0000;
+}
+.scan-area .scan-indicator.scan-ready {
+  background: #2BAB00;
+}
+.scan-area input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 126px;
+  height: 2em;
+}
+
 .sidebar {
   background: #333;
   color: #efefef;

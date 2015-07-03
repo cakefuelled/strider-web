@@ -5,6 +5,14 @@
         Strider - <b>{{Org.name}}</b>
       </a>
     </div>
+    <div class="navbar-text" style="width: 150px; margin-left:15%; display:inline-block">
+      <div class="scan-area">
+        <span ng-show="!scanner.ready">Click to scan</span> 
+        <span ng-show="scanner.ready">Ready</span> 
+        <span class="scan-indicator" ng-class="{'scan-waiting': !scanner.ready,'scan-ready': scanner.ready}"></span>
+        <input ng-focus="scanner.ready = true" ng-blur="scanner.ready = false" type="text" class="scan-input form-transparent" ng-model="scanner.text" ng-model-options="{ debounce: 100 }">
+      </div>
+    </div>
     <div class="navbar-text navbar-right" style="margin:13px 15px 5px 0">
       <span class="dropdown" dropdown>
         <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">

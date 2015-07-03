@@ -6,3 +6,44 @@
     }
   }
 }
+
+/*
+<div class="scan-area">
+        Click to scan <span class="scan-indicator bg-danger"></span>
+        <input type="text" class="scan-input">
+      </div>
+ */
+.scan-area{
+  display:inline-block;
+  width:126px;
+  overflow:hidden;
+  position:relative;
+  background: $gray;
+  border-radius:10px;
+  padding:3px 10px;
+  color: $gray-light;
+
+  .scan-indicator{
+    width:1em;
+    height:1em;
+    border-radius:50%;
+    display:inline-block;
+    float:right;
+    margin-top: 3px;
+
+    &.scan-waiting{
+      background:#eb0000;
+    }
+    &.scan-ready{
+      background:#2BAB00;
+    }
+  }
+  
+  input{
+    position:absolute;
+    top:0;
+    left:0;
+    width:126px;
+    height:2em;
+  }
+}

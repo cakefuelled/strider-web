@@ -15,7 +15,7 @@
             <th>Alt Ids</th>
           </tr>
           <tr ng-repeat="item in items">
-            <td><a ui-sref="orgs.dashboard.items.edit({itemId: item.id})">{{item.id}}</a></td>
+            <td><a ui-sref="orgs.dashboard.items.edit({id: item.id})">{{item.id}}</a></td>
             <td>{{item.altIds}}</td>
           </tr>
         </table>

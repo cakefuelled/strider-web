@@ -190,7 +190,7 @@ define([
             }
           })
           .state('orgs.dashboard.items.edit', {
-            url: '/:itemId',
+            url: '/:id',
             data: {
               displayName: '{{item.id}}'
             },
