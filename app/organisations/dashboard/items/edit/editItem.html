@@ -11,7 +11,7 @@
   </thead>
   <tr>
     <td width="100"><div class="qr-code qr-code-small" id="itemqr"></div></td>
-    <td>{{scan.id}}</td>
+    <td>{{item.id}}</td>
     <td>
       <ul ng-repeat="itemCategory in itemCategories track by $index">
         <li>
@@ -44,7 +44,7 @@
 
 <hr>
 
-<div class="panel panel-default" ng-show="scan.id.length > 0">
+<div class="panel panel-default" ng-show="item.id.length > 0">
   <div class="panel-heading">
     Choose categories
   </div>
@@ -56,20 +56,11 @@
   </div>
 </div>
 
-<div style="position:absolute; z-index:1; border-top:5px dashed #ccc; bottom:0; left:0; width:100%">
-  <textarea id="scanArea" ng-focus="scan.focused = true" ng-blur="scan.focused = false" style="width:100%; height:142px; position:relative; z-index:2" class="form-transparent" ng-model="scan.code" ng-model-options="{ debounce: 100 }"></textarea>
+<hr>
 
-  <div style="position:absolute; top:2px; z-index:2; right:0">
+<div>
     <div class="btn btn-default" ng-click="updateItem()">
       Save <br>
       <div id="saveqr" style="margin-top:10px"></div>
     </div>
   </div>
-  
-  <span style="position:absolute; z-index:-1; color:#999; width:100%; text-align:center; top:50px; font-size:2em;"
-        ng-class="{'text-muted' : scan.focused}">
-    <span ng-show="!scan.focused" class="blink">Place cursor here to scan</span>
-    <span ng-show="scan.focused && !scan.loading">Ready to scan</span>
-    <span ng-show="scan.focused && scan.loading">Processing...</span>
-  </span>
-</div>

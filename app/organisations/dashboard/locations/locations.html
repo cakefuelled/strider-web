@@ -15,7 +15,7 @@
             <th>Postcode</th>
           </tr>
           <tr ng-repeat="loc in locations">
-            <td>{{loc.name}}</td>
+            <td><a ui-sref="orgs.dashboard.locations.edit({id: loc.id})">{{loc.name}}</a></td>
             <td>{{loc.address}}</td>
             <td>{{loc.postcode}}</td>
           </tr>

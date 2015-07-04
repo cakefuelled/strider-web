@@ -2,7 +2,7 @@ define(['angular'], function(angular) {
   'use strict';
 
   angular.module('ItemsCtrls')
-    .controller('EditCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q', '$stateParams',
+    .controller('EditItemCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q', '$stateParams',
       function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q, $stateParams) {
         console.log("Scan controller");
 
@@ -14,23 +14,13 @@ define(['angular'], function(angular) {
             width: 100
           };
 
-        $scope.scan = {
-          focused: false,
-          code: '',
-          id: '',
-          type: '',
-          loading: false
-        };
-
-        $scope.scan.code = 'htt://inventory.aimarfoundation.org/item/' + $stateParams.id;
-
-
         $scope.itemCategories = [];
         $scope.unidentifieds = [];
 
         $scope.categories = Category.query({
           orgId: $scope.Org.id
         });
+
         $scope.categories.$promise.then(function() {
           $scope.categoriesById = normalizeById($scope.categories, 'id');
           $timeout(function() {
@@ -43,29 +33,13 @@ define(['angular'], function(angular) {
         var itemqr = new QRCode('itemqr', qrSettings),
           saveqr = new QRCode('saveqr', qrSettings);
 
-        $scope.$watch('scan.code', function(val) {
-          var protocol = 'http://',
-            divider = '/';
+        $scope.$on('scan', function(parts) {
+          var scannedType = parts[0],
+            scannedId = parts[1];
 
-          saveqr.makeCode('http://internal/save/0');
-
-          if (typeof(val) === 'undefined' || val.length < 1) {
-            return;
-          }
-
-          console.log("Scanned " + val);
-
-          $scope.scan.loading = true;
-
-          var parts = val.substr(protocol.length).split(divider);
-          var scannedType = parts[1];
-          var scannedId = parts[2];
-
-          if (parts.length < 3) {
+          if (parts.length < 2) {
             // Not our format, do something else with it
-            $scope.addAltId(val);
-
-            $scope.scan.code = '';
+            $scope.addAltId(parts[0]);
             return;
           }
 
@@ -80,12 +54,8 @@ define(['angular'], function(angular) {
               $scope.updateItem();
               break;
             default:
-              $scope.addAltId(val);
+              $scope.addAltId(parts[0]);
           }
-
-          $scope.scan.code = '';
-
-          $scope.scan.loading = false;
         });
 
         $scope.showItem = function(itemId) {
@@ -96,7 +66,6 @@ define(['angular'], function(angular) {
             id: itemId
           }, function(item) {
             console.log('   Item loaded');
-            $scope.scan.id = item.id;
             itemqr.makeCode(qrUrl + '/item/' + item.id);
 
             // Get its categories
@@ -178,10 +147,6 @@ define(['angular'], function(angular) {
           $scope.item.altIds.push(val);
         };
 
-        $timeout(function() {
-          $('#scanArea').focus();
-        }, 100);
-
         $scope.removeItem = function(list, index) {
           list.splice(index, 1);
         };
@@ -194,6 +159,9 @@ define(['angular'], function(angular) {
 
           return ret;
         }
+
+        // Load item from params
+        $scope.showItem($stateParams.id);
       }
     ]);
 });

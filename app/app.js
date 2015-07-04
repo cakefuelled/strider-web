@@ -30,7 +30,7 @@ define([
   'organisations/dashboard/items/itemsCtrl',
   'organisations/dashboard/items/itemsService',
   'organisations/dashboard/items/new/newItemCtrl',
-  'organisations/dashboard/items/edit/editCtrl',
+  'organisations/dashboard/items/edit/editItemCtrl',
   'organisations/dashboard/items/print/printCtrl',
   // Dashboard -> Users
   'organisations/dashboard/users/usersService',
@@ -39,6 +39,7 @@ define([
   'organisations/dashboard/locations/locationsCtrl',
   'organisations/dashboard/locations/locationsService',
   'organisations/dashboard/locations/new/newLocationCtrl',
+  'organisations/dashboard/locations/edit/editLocationCtrl',
   // Dashboard -> Categories
   'organisations/dashboard/categories/categoriesCtrl',
   'organisations/dashboard/categories/categoriesService',
@@ -193,12 +194,12 @@ define([
           .state('orgs.dashboard.items.edit', {
             url: '/:id',
             data: {
-              displayName: '{{item.id}}'
+              displayName: 'Edit'
             },
             views: {
               'content@orgs.dashboard': {
-                templateUrl: 'app/organisations/dashboard/items/edit/edit.html',
-                controller: 'EditCtrl'
+                templateUrl: 'app/organisations/dashboard/items/edit/editItem.html',
+                controller: 'EditItemCtrl'
               }
             }
           })
@@ -211,6 +212,18 @@ define([
               'content': {
                 templateUrl: 'app/organisations/dashboard/locations/locations.html',
                 controller: 'LocationCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.locations.edit', {
+            url: '/:id',
+            data: {
+              displayName: 'Edit'
+            },
+            views: {
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/locations/edit/editLocation.html',
+                controller: 'EditLocationCtrl'
               }
             }
           })

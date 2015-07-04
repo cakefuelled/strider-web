@@ -102,6 +102,8 @@ define(['angular', 'md5'], function(angular, md5) {
             getCurrentUser();
           });
         };
+
+        getCurrentUser();
       }
     ]);
 });
