@@ -35,6 +35,7 @@ define([
   // Dashboard -> Users
   'organisations/dashboard/users/usersService',
   'organisations/dashboard/users/userCtrl',
+  'organisations/dashboard/users/edit/editUserCtrl',
   // Dashboard -> Locations
   'organisations/dashboard/locations/locationsCtrl',
   'organisations/dashboard/locations/locationsService',
@@ -236,6 +237,18 @@ define([
               'content': {
                 templateUrl: 'app/organisations/dashboard/users/users.html',
                 controller: 'UsersCtrl'
+              }
+            }
+          })
+          .state('orgs.dashboard.users.edit', {
+            url: '/:id',
+            data: {
+              displayName: 'Edit'
+            },
+            views: {
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/users/edit/editUser.html',
+                controller: 'EditUserCtrl'
               }
             }
           })

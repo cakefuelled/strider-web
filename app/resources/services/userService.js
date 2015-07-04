@@ -15,6 +15,9 @@ define(['angular'], function(angular) {
             method: 'POST',
             url: apiUrl + 'users/logout',
             ignoreAuthModule: true
+          },
+          update: {
+            method: 'PUT'
           }
         });
       }
