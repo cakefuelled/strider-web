@@ -1,49 +1,47 @@
-.qr-code{
-  &.qr-code-small{
-    img{
-      max-width: 75px;
-      max-height: 75px;
-    }
+.qr-code {
+  padding: 5px;
+  background: #fff;
+  border: #efefef solid 1px;
+  display: inline-block;
+  
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &.qr-code-small {
+    max-width: 75px;
+    max-height: 75px;
   }
 }
 
-/*
-<div class="scan-area">
-        Click to scan <span class="scan-indicator bg-danger"></span>
-        <input type="text" class="scan-input">
-      </div>
- */
-.scan-area{
-  display:inline-block;
-  width:126px;
-  overflow:hidden;
-  position:relative;
+.scan-area {
+  display: inline-block;
+  width: 126px;
+  overflow: hidden;
+  position: relative;
   background: $gray;
-  border-radius:10px;
-  padding:3px 10px;
+  border-radius: 10px;
+  padding: 3px 10px;
   color: $gray-light;
-
-  .scan-indicator{
-    width:1em;
-    height:1em;
-    border-radius:50%;
-    display:inline-block;
-    float:right;
+  .scan-indicator {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    display: inline-block;
+    float: right;
     margin-top: 3px;
-
-    &.scan-waiting{
-      background:#eb0000;
+    &.scan-waiting {
+      background: #eb0000;
     }
-    &.scan-ready{
-      background:#2BAB00;
+    &.scan-ready {
+      background: #2BAB00;
     }
   }
-  
-  input{
-    position:absolute;
-    top:0;
-    left:0;
-    width:126px;
-    height:2em;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 126px;
+    height: 2em;
   }
 }

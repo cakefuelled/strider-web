@@ -264,6 +264,18 @@ define([
               }
             }
           })
+          .state('orgs.dashboard.categories.edit', {
+            url: '/:id',
+            data: {
+              displayName: 'Edit'
+            },
+            views: {
+              'content@orgs.dashboard': {
+                templateUrl: 'app/organisations/dashboard/categories/edit/editCategory.html',
+                controller: 'EditCategoryCtrl'
+              }
+            }
+          })
           .state('sign-up', {
             url: '/sign-up',
             data: {},

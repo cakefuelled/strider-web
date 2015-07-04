@@ -7412,17 +7412,21 @@ button.close {
   color: #3680E9;
 }
 
-.qr-code.qr-code-small img {
+.qr-code {
+  padding: 5px;
+  background: #fff;
+  border: #efefef solid 1px;
+  display: inline-block;
+}
+.qr-code img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.qr-code.qr-code-small {
   max-width: 75px;
   max-height: 75px;
 }
 
-/*
-<div class="scan-area">
-        Click to scan <span class="scan-indicator bg-danger"></span>
-        <input type="text" class="scan-input">
-      </div>
- */
 .scan-area {
   display: inline-block;
   width: 126px;

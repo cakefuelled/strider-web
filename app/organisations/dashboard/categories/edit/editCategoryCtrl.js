@@ -2,40 +2,50 @@ define(['angular'], function(angular) {
   'use strict';
   
   angular.module('CategoriesCtrls')
-    .controller('EditCategoryCtrl', ['$scope', '$http', '$timeout', '$modalInstance', 'apiUrl', 'Category', 'Org', 'selectedCategory',
-      function($scope, $http, $timeout, $modalInstance, apiUrl, Category, Org, selectedCategory) {
+    .controller('EditCategoryCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Category', 'Org', '$stateParams', '$state',
+      function($scope, $http, $timeout, apiUrl, Category, Org, $stateParams, $state) {
         
-        $scope.category = selectedCategory;
+        $scope.category = Category.get({
+          orgId: $scope.Org.id,
+          id: $stateParams.id
+        });
+
+        $scope.updating = false;
 
         $timeout(function() {
-          $scope.qr = new QRCode('editCategoryQr');
+          $scope.qr = new QRCode('editCategoryQr',{
+            height: 100,
+            width: 100
+          });
           $scope.qr.makeCode('http://inventory.aimarfoundation.org/category/'+$scope.category.id);
-        }, 2000);
+        }, 1000);
 
         $scope.submit = function() {
+          $scope.updating = true;
+
           $scope.category.$update({
             orgId: Org.id,
             id: $scope.category.id
           }, function(updatedCategory) {
-            $modalInstance.close(updatedCategory);
+            $scope.updating = false;
           }, function(err) {
             alert(err);
+            $scope.updating = false;
           });
         };
 
         $scope.delete = function() {
+          $scope.updating = true;
+
           $scope.category.$remove({
             orgId: Org.id,
             id: $scope.category.id
-          }, function(deletedCategory) {
-            $modalInstance.close(deletedCategory);
+          }, function() {
+            $state.go('orgs.dashboard.categories');
           }, function(err) {
             alert(err);
+            $scope.updating = false;
           });
-        };
-
-        $scope.cancel = function() {
-          $modalInstance.dismiss('cancel');
         };
       }
     ]);

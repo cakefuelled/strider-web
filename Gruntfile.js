@@ -9,6 +9,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ng-constant');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.initConfig({
     bowerRequirejs: {
@@ -75,6 +76,9 @@ module.exports = function(grunt) {
           }, {
             pattern: '<!-- appLoader -->',
             replacement: '<script type="text/javascript">require([\'app\'], function(app) {});</script>'
+          }, {
+            pattern: 'app.css',
+            replacement: 'app.min.css'
           }]
         }
       }
@@ -136,6 +140,17 @@ module.exports = function(grunt) {
         files: 'app/resources/sass/**/*.scss',
         tasks: 'sass:dev'
       }
+    },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'app/assets/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'app/assets/css',
+          ext: '.min.css'
+        }]
+      }
     }
   });
 
@@ -149,6 +164,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'sass:dev',
+    'cssmin',
     'ngconstant:build',
     'requirejs',
     'string-replace',
@@ -158,6 +174,7 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy', [
     'clean',
     'sass:dist',
+    'cssmin',
     'ngconstant:deploy',
     'requirejs',
     'string-replace',

@@ -16,7 +16,7 @@
             <th>Icon</th>
           </tr>
           <tr ng-repeat="cat in categories">
-            <td><a ng-click="showEditCategoryForm(cat)">{{cat.name}}</a></td>
+            <td><a ui-sref="orgs.dashboard.categories.edit({id: cat.id})">{{cat.name}}</a></td>
             <td>{{cat.description}}</td>
             <td>{{cat.colour}}</td>
             <td>{{cat.icon}}</td>
