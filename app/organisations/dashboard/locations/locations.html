@@ -7,7 +7,7 @@
           <a class="btn btn-xs btn-default" ng-click="showNewLocationForm()">New Location</a>
         </span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body" ng-show="locations.$resolved">
         <table class="table table-condensed table-striped" ng-show="locations.length > 0">
           <tr>
             <th>Name</th>
@@ -23,6 +23,9 @@
         <div class="alert alert-info" ng-show="locations.length < 1">
           <i class="fa fa-warning"></i> No locations available
         </div>
+      </div>
+      <div class="panel-body" ng-show="!locations.$resolved">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Loading locations...
       </div>
     </div>
   </div>

@@ -6,15 +6,9 @@ define(['angular'], function(angular) {
       function($scope, $modal, Locations) {
         console.log("Location Controller");
 
-        $scope.locations = [];
-
-        $scope.refreshLocations = function() {
-          $scope.locations = Locations.query({
-            orgId: $scope.Org.id
-          });
-        };
-
-        $scope.refreshLocations();
+        $scope.locations = Locations.query({
+          orgId: $scope.Org.id
+        });
 
         $scope.showNewLocationForm = function() {
           var newLocationModal = $modal.open({
@@ -28,10 +22,9 @@ define(['angular'], function(angular) {
           });
 
           newLocationModal.result.then(function(newLocation) {
-            $scope.refreshLocations();
+            $scope.locations.push(newLocation);
           });
-        }
-
+        };
       }
     ]);
 });

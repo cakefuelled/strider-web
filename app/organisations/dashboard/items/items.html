@@ -8,7 +8,7 @@
           <a class="btn btn-xs btn-default" ui-sref="orgs.dashboard.items.print">Print labels</a>
         </span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body" ng-show="items.$resolved">
         <table class="table table-condensed table-striped" ng-show="items.length > 0">
           <tr>
             <th>Id</th>
@@ -22,6 +22,9 @@
         <div class="alert alert-info" ng-show="items.length < 1">
           <i class="fa fa-warning"></i> No items available
         </div>
+      </div>
+      <div class="panel-body" ng-show="!items.$resolved">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Loading items...
       </div>
     </div>
   </div>

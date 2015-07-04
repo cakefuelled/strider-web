@@ -252,8 +252,8 @@ define([
         cfpLoadingBarProvider.includeBar = true;
       }
     ])
-    .run(['$http', 'store',
-      function($http, store) {
+    .run(['$http', 'store', '$rootScope',
+      function($http, store, $rootScope) {
 
         $http.defaults.withCredentials = true;
 
@@ -276,6 +276,10 @@ define([
         }
         $(window).resize(resize);
         setTimeout(resize, 250);
+
+        $rootScope.$on('$stateChangeSuccess', function(){
+          setTimeout(resize, 250);
+        });
       }
     ]);
 

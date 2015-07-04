@@ -12,11 +12,11 @@ define(['angular'], function(angular) {
             id: 'count'
           }),
           locations: Locations.get({
-            org: $scope.Org.id,
+            orgId: $scope.Org.id,
             id: 'count'
           }),
           users: OrgUsers.get({
-            org: $scope.Org.id,
+            orgId: $scope.Org.id,
             id: 'count'
           }),
           categories: Category.get({

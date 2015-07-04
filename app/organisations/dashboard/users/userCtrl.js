@@ -7,7 +7,7 @@ define(['angular'], function(angular) {
         console.log("Users Controller");
 
         $scope.users = OrgUsers.query({
-          org: $scope.Org.id
+          orgId: $scope.Org.id
         });
       }
     ]);
