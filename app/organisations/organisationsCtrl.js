@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
           id: 'me'
         });
 
-        $scope.mainClass = 'backdrop backdrop-payphone';
+        $scope.mainClass = 'backdrop backdrop-bus';
 
         $scope.organisations.$promise.then(function() {}, function(err) {
           if (err.status === 404) {

@@ -7659,6 +7659,10 @@ html {
   background-color: #fff;
   background-image: url("../img/bg/sky.jpg");
 }
+.backdrop.backdrop-bus, .waiting-for-angular #main.backdrop-bus {
+  background-color: #fff;
+  background-image: url("../img/bg/bus.jpg");
+}
 
 .waiting-for-angular #main,
 .backdrop.backdrop-payphone {

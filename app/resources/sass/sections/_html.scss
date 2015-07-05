@@ -26,6 +26,11 @@ html{
     background-color:#fff;
     background-image: url('../img/bg/sky.jpg');
   }
+
+  &.backdrop-bus{
+    background-color:#fff;
+    background-image: url('../img/bg/bus.jpg');
+  }
 }
 .waiting-for-angular #main,
 .backdrop.backdrop-payphone{
