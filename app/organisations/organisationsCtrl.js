@@ -19,15 +19,19 @@ define(['angular'], function(angular) {
           }
         });
 
+        $scope.$on('event:auth-loginConfirmed', function() {
+          $scope.organisations = UserOrgs.query({
+            id: 'me'
+          });
+        });
+
         $scope.logout = function() {
           User.logout().$promise.then(function() {
             console.log('Logged out');
             store.remove('accessToken');
             delete $http.defaults.headers.common.Authorization;
 
-            $scope.organisations = UserOrgs.query({
-              id: 'me'
-            });
+            $scope.$emit('event:auth-loginRequired', {});
           });
         };
       }

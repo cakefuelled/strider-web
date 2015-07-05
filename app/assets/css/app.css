@@ -7343,6 +7343,7 @@ button.close {
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 999;
 }
 
 .form-signin {
@@ -7429,7 +7430,7 @@ button.close {
 }
 .panel-dark .list-group-item:hover {
   background: rgba(255, 255, 255, 0.3);
-  color: #c4c4c4;
+  color: #eeeeee;
 }
 
 .panel-darker {
@@ -7449,7 +7450,7 @@ button.close {
 }
 .panel-darker .list-group-item:hover {
   background: rgba(255, 255, 255, 0.3);
-  color: #eeeeee;
+  color: #c4c4c4;
 }
 
 .qr-code {
