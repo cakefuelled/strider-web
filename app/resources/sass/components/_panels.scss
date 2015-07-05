@@ -1,0 +1,57 @@
+.panel-stats {
+  background: transparent;
+  border: solid 1px $brand-info;
+  .panel-heading {
+    background-color: $brand-info;
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    color: #fff;
+    border-radius: 3px;
+  }
+  .panel-body {
+    text-align: center;
+    h1 {
+      color: $brand-primary;
+    }
+  }
+}
+
+.panel-dark {
+  background: rgba(0, 0, 0, 0.5);
+  border: $gray solid 1px;
+  color: #efefef;
+  hr {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  a {
+    color: $gray-lighter;
+  }
+  .list-group-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: $gray;
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: $gray-lighter;
+    }
+  }
+}
+
+.panel-darker {
+  background: rgba(0, 0, 0, 0.7);
+  border: $gray-darker solid 1px;
+  color: #efefef;
+  hr {
+    border-color: rgba(255, 255, 255, 0.33);
+  }
+  a {
+    color: $gray-light;
+  }
+  .list-group-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: $gray-dark;
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: $gray-light;
+    }
+  }
+}
