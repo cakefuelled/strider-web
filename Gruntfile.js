@@ -179,7 +179,8 @@ module.exports = function(grunt) {
     'requirejs',
     'string-replace',
     'copy',
-    'gh-pages'
+    'gh-pages',
+    'ngconstant:build'
   ]);
 
 };
