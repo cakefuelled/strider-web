@@ -1,39 +1,40 @@
-html, body {
-  width:100%;
-  height:100%;
-  background:transparent;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: transparent;
 }
-html{
+
+html {
   background-color: #EFEFEF;
   -webkit-box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 200px 0px rgba(0, 0, 0, 0.3);
 }
 
-.backdrop, .waiting-for-angular #main{
+.backdrop,
+.waiting-for-angular #main {
   position: absolute;
   z-index: 1;
   background: inherit;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  overflow:hidden;
+  overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: fixed;
-
-  &.backdrop-sky{
-    background-color:#fff;
+  &.backdrop-sky {
+    background-color: #fff;
     background-image: url('../img/bg/sky.jpg');
   }
-
-  &.backdrop-bus{
-    background-color:#fff;
+  &.backdrop-bus {
+    background-color: #fff;
     background-image: url('../img/bg/bus.jpg');
   }
 }
-.waiting-for-angular #main,
-.backdrop.backdrop-payphone{
-    background-color:#000;
-    background-image: url('../img/bg/payphone.jpg');
-  }
+
+.waiting-for-angular {
+  background-color: #fff;
+  background-image: url('../img/bg/sky.jpg');
+}
