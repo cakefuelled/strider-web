@@ -97,7 +97,7 @@ requirejs.config({
     'bootstrap-sass': '../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
     qrcodejs: '../app/resources/js-non-bower/qrcode',
     jsbarcode: '../bower_components/jsbarcode/JsBarcode',
-    jsbarcode_code128: '../bower_components/jsbarcode/CODE128'
+    jsbarcode_code128: '../bower_components/jsbarcode/barcodes/CODE128'
   },
   packages: [
 

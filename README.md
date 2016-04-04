@@ -12,7 +12,23 @@ $ npm install
 $ bower install
 ```
 
-Now just open `index.html` in your browser and let the magic happen!
+Now serve your files and load index.html. An easy way is to use `python -m "SimpleHTTPServer"` and navigate to http://localhost:8000/.
+
+####AuthHandler Fix
+
+There is a problem with the angular-auth-interceptor module that may prevent you from loading Strider (with a TypeError in angular-resource.js). If this is the case, after the bower install step, you should replace lines 5-13 in bower_components/angular-auth-interceptor/authHandler.js with the following:
+
+```
+return {
+	responseError: function (rejection) {
+		if (rejection.status === 401) {
+			$rootScope.$broadcast('401:unauthorized');
+			return $q.reject(rejection);
+		}
+		return $q.reject(rejection);
+	}
+}
+```
 
 ##Deploying
 The whole process of compiling and deploying to the production environment is done with **grunt**. At the moment there are two tasks available:
@@ -41,22 +57,6 @@ $ grunt
 
 The default task for grunt takes all the bower components and adds them to the Requirejs paths configuration, so they are available in all the modules.
 Now you can simply add the dependency with the bower installed name.
-
-##AuthHandler Fix
-
-There is a problem with the angular-auth-interceptor module that may prevent you from loading Strider (with a TypeError in angular-resource.js). If this is the case, after the bower install step, you should replace lines 5-13 in bower_components/angular-auth-interceptor/authHandler.js with the following:
-
-```
-return {
-	responseError: function (rejection) {
-		if (rejection.status === 401) {
-			$rootScope.$broadcast('401:unauthorized');
-			return $q.reject(rejection);
-		}
-		return $q.reject(rejection);
-	}
-}
-```
 
 ##Contributing
 Pull Requests are always welcome, take a look at the existing code to become familiar with our style guide.
