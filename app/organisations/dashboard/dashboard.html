@@ -19,7 +19,7 @@
           <img gravatar email-hash="{{user.md5}}"  style="max-height:2em; max-width:2em" class="img img-circle"> {{user.name || user.email}} <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href=""><i class="fa fa-user"></i> My profile</a></li>
+          <li><a ui-sref="orgs.dashboard.users.edit({id: user.id})"><i class="fa fa-user"></i> My profile</a></li>
           <li><a href=""><i class="fa fa-gear"></i> Settings</a></li>
           <li><a ui-sref="orgs"><i class="fa fa-building-o"></i> Organizations</a></li>
           <li class="divider"></li>

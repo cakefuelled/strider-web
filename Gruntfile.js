@@ -161,6 +161,14 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
+  grunt.registerTask('build-nosass', [
+    'clean',
+    'ngconstant:build',
+    'requirejs',
+    'string-replace',
+    'copy'
+  ]);
+
   grunt.registerTask('build', [
     'clean',
     'sass:dev',
@@ -179,7 +187,8 @@ module.exports = function(grunt) {
     'requirejs',
     'string-replace',
     'copy',
-    'gh-pages'
+    'gh-pages',
+    'ngconstant:build'
   ]);
 
 };
