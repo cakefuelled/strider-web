@@ -50,7 +50,7 @@ define(['angular', 'md5'], function(angular, md5) {
             return broadcastScan(parts[0]);
           }
 
-          if($state.includes('edit')){
+          if($state.current.name.indexOf('edit') >= 0){
             // We are already in an editing page
             // so just broadcast the scan
             return broadcastScan(parts);
@@ -76,7 +76,7 @@ define(['angular', 'md5'], function(angular, md5) {
 
         function broadcastScan(data){
           console.log('EMIT: ',data);
-          $scope.$emit('scan',data);
+          $scope.$broadcast('scan',data);
         }
 
         function getCurrentUser() {

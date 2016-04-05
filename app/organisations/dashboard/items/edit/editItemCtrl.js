@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
   angular.module('ItemsCtrls')
     .controller('EditItemCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q', '$stateParams',
       function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q, $stateParams) {
-        console.log("Scan controller");
+        console.log("Edit Item Controller controller");
 
         $scope.savedText = false;
 
@@ -30,10 +30,10 @@ define(['angular'], function(angular) {
           }, 100);
         });
 
-        var itemqr = new QRCode('itemqr', qrSettings),
-          saveqr = new QRCode('saveqr', qrSettings);
+        var itemqr = new QRCode('itemqr', qrSettings);
+          //saveqr = new QRCode('saveqr', qrSettings);
 
-        $scope.$on('scan', function(parts) {
+        $scope.$on('scan', function(event, parts) {
           var scannedType = parts[0],
             scannedId = parts[1];
 
@@ -50,8 +50,15 @@ define(['angular'], function(angular) {
             case 'category':
               $scope.addCategory(scannedId);
               break;
-            case 'save':
-              $scope.updateItem();
+            case 'internal':
+                switch(scannedId){
+                  case 'save':
+                    $scope.updateItem();
+                    break;
+                  default:
+                    console.warn('Unrecognised internal action: ' + scannedId);
+                }
+
               break;
             default:
               $scope.addAltId(parts[0]);
@@ -73,7 +80,7 @@ define(['angular'], function(angular) {
               'filter[where][itemId]': itemId
             });
           });
-        }
+        };
 
         $scope.addCategory = function(categoryId) {
           if ($scope.item) {
@@ -81,7 +88,7 @@ define(['angular'], function(angular) {
             $scope.category = Category.get({
               orgId: $scope.Org.id,
               id: categoryId
-            }, function(category) {
+            }, function (category) {
               //Add the category to the item
               var newItemCategory = new ItemCategory({
                 categoryId: category.id,
@@ -90,7 +97,7 @@ define(['angular'], function(angular) {
               $scope.itemCategories.push(newItemCategory);
             });
           }
-        }
+        };
 
         $scope.updateItem = function() {
           $scope.item.$update({

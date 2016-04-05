@@ -66,6 +66,9 @@ requirejs.config({
     qrcodejs: {
       exports: 'QRCode'
     },
+    jsbarcode_code128: {
+      deps: ['jsbarcode']
+    },
     jsbarcode: {
       deps: ['jquery'],
       exports: 'JsBarcode'
