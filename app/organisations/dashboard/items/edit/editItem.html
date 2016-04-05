@@ -49,9 +49,8 @@
     Choose categories
   </div>
   <div class="panel-body">
-    <a href="" style="margin-right:10px" ng-click="addCategory(category.id)" ng-repeat="category in categories" class="btn btn-sm btn-default">
+    <a href="" style="margin-right:10px; margin-bottom: 10px;" ng-click="addCategory(category.id)" ng-repeat="category in categories" class="btn btn-sm btn-default">
       {{category.name}}
-      <div class="qr-code qr-code-small" id="qr-category-{{category.id}}"></div>
     </a>
   </div>
 </div>
@@ -60,7 +59,6 @@
 
 <div>
     <div class="btn btn-default" ng-click="updateItem()">
-      Save <br>
-      <div id="saveqr" style="margin-top:10px"></div>
+      Save
     </div>
   </div>
