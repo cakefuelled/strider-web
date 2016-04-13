@@ -12,11 +12,17 @@ define(['angular', 'jquery', 'sweetalert'], function(angular, $, swal) {
           var login = $('#loginView');
 
           scope.$on('event:auth-loginRequired', function() {
-            scope.mainClass = 'blur';
+            scope.$broadcast('changeMainClass', {
+              action: 'add',
+              name: 'blur'
+            });
             login.fadeIn('fast');
           });
           scope.$on('event:auth-loginConfirmed', function() {
-            scope.mainClass = '';
+            scope.$broadcast('changeMainClass', {
+              action: 'remove',
+              name: 'blur'
+            });
             login.fadeOut();
           });
         },

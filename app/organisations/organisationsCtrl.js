@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
           id: 'me'
         });
 
-        $scope.mainClass = 'backdrop backdrop-bus';
+        $scope.mainClasses = ['backdrop', 'backdrop-bus'];
 
         $scope.organisations.$promise.then(function() {}, function(err) {
           if (err.status === 404) {
@@ -23,6 +23,18 @@ define(['angular'], function(angular) {
           $scope.organisations = UserOrgs.query({
             id: 'me'
           });
+        });
+
+        $scope.$on('changeMainClass', function(event, data){
+          console.log('changeMainClass', data);
+          if(data.action === 'add'){
+            console.log('adding main class:');
+            $scope.mainClasses.push(data.name);
+          }else{
+            console.log('unbluring bg');
+            var index = $scope.mainClasses.indexOf(data.name);
+            $scope.mainClasses.splice(index, 1);
+          }
         });
 
         $scope.logout = function() {

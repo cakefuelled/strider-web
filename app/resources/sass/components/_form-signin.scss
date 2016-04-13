@@ -4,15 +4,33 @@
   width:100%;
   top:0;
   left:0;
-  z-index:999
+  z-index: 999;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  a{
+    color: #fff;
+  }
 }
 
 .form-signin {
-  max-width: 330px;
-  margin: 10% auto;
+  max-width: 450px;
+  margin: 15% auto;
 
   .panel {
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 100px;
+    border-color: $gray-darker;
+  }
+
+  .panel-heading{
+    background-color: $gray-darker;
+    border-color: $gray-base;
+    color: $gray-lighter;
+  }
+
+  .panel-body{
+    background-color: $gray-dark;
+    color: $gray-lighter;
   }
 
   .form-signin-heading,

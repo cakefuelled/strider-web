@@ -8,6 +8,10 @@ define(['angular','md5'], function(angular, md5) {
         
         // Hide login box
         $scope.$emit('event:auth-loginConfirmed');
+        $scope.$broadcast('changeMainClass', {
+          action: 'add',
+          name: 'backdrop-bus'
+        });
 
         $scope.user = {
           email: '',
