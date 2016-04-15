@@ -97,9 +97,6 @@ module.exports = function(grunt) {
           }, {
             pattern: '<!-- appLoader -->',
             replacement: '<script type="text/javascript">require([\'app\'], function(app) {});</script>'
-          }, {
-            pattern: 'app.css',
-            replacement: 'app.min.css'
           }]
         }
       }
