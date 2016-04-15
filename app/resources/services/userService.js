@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   "use strict";
 
-  angular.module('services.users', [])
+  angular.module('services')
     .service('User', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
         return $resource(apiUrl + 'users/:id', {id: 'me'}, {

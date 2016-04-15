@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('CategoriesCtrls', [])
+  angular.module('controllers')
     .controller('CategoryCtrl', ['$scope', '$modal', 'Category',
       function($scope, $modal, Category) {
 

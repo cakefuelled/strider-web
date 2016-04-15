@@ -20,6 +20,7 @@ define([
   'angular-auth-interceptor',
   'angular-utils-ui-breadcrumbs',
   // App deps
+  'resources/modules',
   'constants',
   // Dashboard
   'organisations/organisationsCtrl',
@@ -50,6 +51,7 @@ define([
   'sign-up/signUpCtrl',
   // Resources
   'resources/services/userService',
+  'resources/services/pageService',
   'resources/directives/loginHandler',
   'resources/directives/gravatar'
 
@@ -57,37 +59,21 @@ define([
   "use strict";
 
   var app = angular.module('strider', [
+    // deps
     'ui.router',
     'ui.bootstrap',
     'angularUtils.directives.uiBreadcrumbs',
     'http-auth-interceptor',
     'authHandler',
-    'loginHandler',
     'angular-loading-bar',
     'ngResource',
     'angular-ladda',
     'angular-storage',
-
+    // app specific
     'constants',
-
-    'OrganisationCtrls',
-    'DashboardCtrls',
-    'ItemsCtrls',
-    'PrintCtrls',
-    'LandingCtrls',
-    'LocationCtrls',
-    'CategoriesCtrls',
-    'UsersCtrls',
-
-    'SignUpCtrls',
-
-    'services.users',
-    'services.items',
-    'services.locations',
-    'services.categories',
-    'services.organisations',
-    'services.orgUsers',
-    'strider.gravatar'
+    'controllers',
+    'services',
+    'directives'
   ]).
   config(['$stateProvider', 'cfpLoadingBarProvider',
       function($stateProvider, cfpLoadingBarProvider) {

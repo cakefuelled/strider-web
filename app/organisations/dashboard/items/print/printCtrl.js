@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('PrintCtrls', [])
+  angular.module('controllers')
     .controller('PrintCtrl', ['$scope', '$http', 'apiUrl', 'Item', '$stateParams', 'Organisations', '$timeout',
       function($scope, $http, apiUrl, Item, $stateParams, Organisations, $timeout) {
         console.log("Print controller");

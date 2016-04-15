@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('ItemsCtrls')
+  angular.module('controllers')
     .controller('EditItemCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Item', 'Category', 'ItemCategory', '$q', '$stateParams',
       function($scope, $http, $timeout, apiUrl, Item, Category, ItemCategory, $q, $stateParams) {
         console.log("Edit Item Controller controller");

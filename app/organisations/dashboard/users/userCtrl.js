@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('UsersCtrls', [])
+  angular.module('controllers')
     .controller('UsersCtrl', ['$scope', 'OrgUsers',
       function($scope, OrgUsers) {
         console.log("Users Controller");

@@ -1,7 +1,7 @@
 define(['angular', 'md5'], function(angular, md5) {
   'use strict';
 
-  angular.module('DashboardCtrls', [])
+  angular.module('controllers')
     .controller('DashboardCtrl', ['$scope', 'User', 'store', '$http', 'Org', '$state',
       function($scope, User, store, $http, Org, $state) {
         console.log("Dashboard Controller");

@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
   
-  angular.module('LocationCtrls')
+  angular.module('controllers')
     .controller('EditLocationCtrl', ['$scope', '$http', 'apiUrl', 'Locations', 'Org', '$stateParams', '$timeout',
       function($scope, $http, apiUrl, Locations, Org, $stateParams, $timeout) {
         

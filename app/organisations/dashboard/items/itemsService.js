@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   "use strict";
 
-  angular.module('services.items', [])
+  angular.module('services')
     .factory('Item', ['$resource', 'apiUrl',
       function($resource, apiUrl) {
         return $resource(apiUrl + 'organisations/:orgId/items/:id', null, {

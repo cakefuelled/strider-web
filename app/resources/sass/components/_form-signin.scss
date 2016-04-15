@@ -17,22 +17,6 @@
   max-width: 450px;
   margin: 15% auto;
 
-  .panel {
-    box-shadow: rgba(0, 0, 0, 0.3) 0 0 100px;
-    border-color: $gray-darker;
-  }
-
-  .panel-heading{
-    background-color: $gray-darker;
-    border-color: $gray-base;
-    color: $gray-lighter;
-  }
-
-  .panel-body{
-    background-color: $gray-dark;
-    color: $gray-lighter;
-  }
-
   .form-signin-heading,
   .checkbox {
     margin-bottom: 10px;
@@ -50,7 +34,7 @@
     box-sizing: border-box;
     padding: 10px;
     font-size: 16px;
-    
+
     :focus {
       z-index: 2;
     }

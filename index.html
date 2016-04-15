@@ -33,11 +33,13 @@
   <div id="loginView">
     <div class="form-signin">
       <form ng-submit="login()">
-        <div class="panel panel-default">
-          <div class="panel-body">
+        <div class="panel panel-darker">
+          <div class="panel-heading">
             <p class="text-center">
               <img src="app/assets/img/logo-text-white.png" alt="strider" width="200">
             </p>
+          </div>
+          <div class="panel-body">
             <div class="text-danger text-center shake" ng-class="{'animated': loginErrors.length > 0}" style="padding-bottom: 10px;">{{loginErrors}}</div>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" ng-model="user.email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
