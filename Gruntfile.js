@@ -11,6 +11,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-sass-globbing');
 
   grunt.initConfig({
     bowerRequirejs: {
@@ -127,7 +128,17 @@ module.exports = function(grunt) {
         ]
       }
     },
-    // This is for Ruby-based SASS compilation
+    sass_globbing: {
+      dev: {
+        files: {
+          'app/resources/sass/_importMap.scss': 'app/resources/sass/partials/**/*.scss',
+          'app/resources/sass/_variablesMap.scss': ['app/resources/sass/libraries/*.scss']
+        },
+        options: {
+          useSingleQuotes: false
+        }
+      }
+    },
     sass: {
       dev: { // Target
         options: { // Target options
@@ -148,7 +159,7 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: 'app/resources/sass/**/*.scss',
-        tasks: 'sass:dev'
+        tasks: ['sass_globbing', 'sass:dev', 'postcss']
       }
     }
   });
@@ -162,6 +173,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build-css', [
     'clean:css',
+    'sass_globbing',
     'sass:dev',
     'postcss'
   ]);

@@ -37,6 +37,7 @@
     "grunt-gh-pages": "^0.10.0",
     "grunt-ng-constant": "^1.1.0",
     "grunt-postcss": "^0.8.0",
+    "grunt-sass-globbing": "^1.5.1",
     "grunt-string-replace": "^1.0.0",
     "pixrem": "^3.0.0",
     "rjs-build-analysis": "0.0.3"
