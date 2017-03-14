@@ -24,7 +24,7 @@
 </head>
 
 <body class="login-handler waiting-for-angular">
-  <div id="main" ui-view="main" ng-class="mainClass">
+  <div id="main" ui-view="main" ng-class="mainClasses">
     <div style="margin-top:15%; text-align:center;">
       <h1><img src="app/assets/img/logo-text.png" width="200"></h1>
       <p style="color:#999; margin-top:50px">Loading...</p>
@@ -33,9 +33,11 @@
   <div id="loginView">
     <div class="form-signin">
       <form ng-submit="login()">
-        <div class="panel panel-default">
+        <div class="panel panel-darker">
           <div class="panel-heading">
-            Sign in
+            <p class="text-center">
+              <img src="app/assets/img/logo-text-white.png" alt="strider" width="200">
+            </p>
           </div>
           <div class="panel-body">
             <div class="text-danger text-center shake" ng-class="{'animated': loginErrors.length > 0}" style="padding-bottom: 10px;">{{loginErrors}}</div>

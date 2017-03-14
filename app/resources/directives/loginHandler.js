@@ -1,7 +1,7 @@
 define(['angular', 'jquery', 'sweetalert'], function(angular, $, swal) {
   "use strict";
 
-  angular.module('loginHandler', [])
+  angular.module('directives')
     .directive('loginHandler', function() {
       return {
         restrict: 'C',
@@ -12,18 +12,24 @@ define(['angular', 'jquery', 'sweetalert'], function(angular, $, swal) {
           var login = $('#loginView');
 
           scope.$on('event:auth-loginRequired', function() {
-            scope.mainClass = 'blur';
             login.fadeIn('fast');
           });
           scope.$on('event:auth-loginConfirmed', function() {
-            scope.mainClass = '';
             login.fadeOut();
           });
         },
-        controller: ['store', '$scope', 'apiUrl', 'authService', 'User', '$http',
-          function(store, $scope, apiUrl, authService, User, $http) {
+        controller: ['store', '$scope', 'apiUrl', 'authService', 'User', '$http', 'Page',
+          function(store, $scope, apiUrl, authService, User, $http, Page) {
             $scope.loginBtn = 'Sign in';
             $scope.loginErrors = '';
+
+            $scope.$on('event:auth-loginRequired', function() {
+              Page.blur();
+            });
+
+            $scope.$on('event:auth-loginConfirmed', function() {
+              Page.unblur();
+            });
 
             $scope.login = function() {
               $scope.loginBtn = 'Signing in...';

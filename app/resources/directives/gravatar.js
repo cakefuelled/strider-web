@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   "use strict";
 
-  angular.module('strider.gravatar', []).
+  angular.module('directives').
   directive('gravatar', function() {
     return {
       restrict: 'AE',

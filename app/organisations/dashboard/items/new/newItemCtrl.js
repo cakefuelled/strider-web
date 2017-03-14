@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
   
-  angular.module('ItemsCtrls')
+  angular.module('controllers')
     .controller('NewItemCtrl', ['$scope', '$http', '$modalInstance', 'apiUrl', 'Item',
       function($scope, $http, $modalInstance, apiUrl, Item) {
         

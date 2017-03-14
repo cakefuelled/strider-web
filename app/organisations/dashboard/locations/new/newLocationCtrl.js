@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
   
-  angular.module('LocationCtrls')
+  angular.module('controllers')
     .controller('NewLocationCtrl', ['$scope', '$http', '$modalInstance', 'apiUrl', 'Locations', 'Org',
       function($scope, $http, $modalInstance, apiUrl, Locations, Org) {
         

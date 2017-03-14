@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
   
-  angular.module('UsersCtrls')
+  angular.module('controllers')
     .controller('EditUserCtrl', ['$scope', '$http', 'apiUrl', 'User', 'Org', '$stateParams', '$timeout',
       function($scope, $http, apiUrl, User, Org, $stateParams, $timeout) {
         

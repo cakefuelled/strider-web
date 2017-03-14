@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
   
-  angular.module('CategoriesCtrls')
+  angular.module('controllers')
     .controller('EditCategoryCtrl', ['$scope', '$http', '$timeout', 'apiUrl', 'Category', 'Org', '$stateParams', '$state',
       function($scope, $http, $timeout, apiUrl, Category, Org, $stateParams, $state) {
         

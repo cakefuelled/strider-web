@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('OrganisationCtrls', [])
+  angular.module('controllers')
     .controller('OrganisationCtrl', ['$scope', '$http', 'apiUrl', 'UserOrgs', 'store', 'User',
       function($scope, $http, apiUrl, UserOrgs, store, User) {
         console.log('Organisation ctrl');
@@ -9,8 +9,6 @@ define(['angular'], function(angular) {
         $scope.organisations = UserOrgs.query({
           id: 'me'
         });
-
-        $scope.mainClass = 'backdrop backdrop-bus';
 
         $scope.organisations.$promise.then(function() {}, function(err) {
           if (err.status === 404) {

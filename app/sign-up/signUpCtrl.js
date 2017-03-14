@@ -1,13 +1,17 @@
 define(['angular','md5'], function(angular, md5) {
   'use strict';
   
-  angular.module('SignUpCtrls', [])
+  angular.module('controllers')
     .controller('SignUpCtrl', ['$scope', 'User',
       function($scope, User) {
         console.log("Sign Up Controller");
         
         // Hide login box
         $scope.$emit('event:auth-loginConfirmed');
+        $scope.$broadcast('changeMainClass', {
+          action: 'add',
+          name: 'backdrop-bus'
+        });
 
         $scope.user = {
           email: '',

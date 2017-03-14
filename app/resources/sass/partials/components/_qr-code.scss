@@ -1,0 +1,15 @@
+.qr-code {
+  padding: 5px;
+  background: #fff;
+  border: #efefef solid 1px;
+  display: inline-block;
+  
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &.qr-code-small {
+    max-width: 75px;
+    max-height: 75px;
+  }
+}

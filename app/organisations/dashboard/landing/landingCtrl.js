@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  angular.module('LandingCtrls', [])
+  angular.module('controllers')
     .controller('LandingCtrl', ['$scope', 'Locations', 'Item', 'OrgUsers', 'Category',
       function($scope, Locations, Item, OrgUsers, Category) {
         console.log("Landing Controller");

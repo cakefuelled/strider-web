@@ -10,6 +10,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-sass-globbing');
 
   grunt.initConfig({
     bowerRequirejs: {
@@ -19,7 +21,27 @@ module.exports = function(grunt) {
     },
     clean: {
       build: {
-        src: ["build", 'assets/css']
+        src: ["build"]
+      },
+      css: {
+        src: ["app/assets/css"]
+      }
+    },
+    postcss: {
+      options: {
+        map: {
+          inline: false,
+          annotation: 'assets/css/'
+        },
+
+        processors: [
+          require('pixrem')(),
+          require('autoprefixer')({browsers: 'last 2 versions'}),
+          require('cssnano')()
+        ]
+      },
+      dist: {
+        src: 'app/assets/css/*.css'
       }
     },
     ngconstant: {
@@ -76,9 +98,6 @@ module.exports = function(grunt) {
           }, {
             pattern: '<!-- appLoader -->',
             replacement: '<script type="text/javascript">require([\'app\'], function(app) {});</script>'
-          }, {
-            pattern: 'app.css',
-            replacement: 'app.min.css'
           }]
         }
       }
@@ -106,23 +125,25 @@ module.exports = function(grunt) {
             ],
             dest: 'build/'
           }
-        ],
-      },
+        ]
+      }
     },
-    // This is for Ruby-based SASS compilation
+    sass_globbing: {
+      dev: {
+        files: {
+          'app/resources/sass/_importMap.scss': 'app/resources/sass/partials/**/*.scss',
+          'app/resources/sass/_variablesMap.scss': ['app/resources/sass/libraries/*.scss']
+        },
+        options: {
+          useSingleQuotes: false
+        }
+      }
+    },
     sass: {
       dev: { // Target
         options: { // Target options
           style: 'expanded',
           trace: true
-        },
-        files: { // Dictionary of files
-          'app/assets/css/app.css': 'app/resources/sass/app.scss' // 'destination': 'source'
-        }
-      },
-      dist: { // Target
-        options: { // Target options
-          style: 'compressed'
         },
         files: { // Dictionary of files
           'app/assets/css/app.css': 'app/resources/sass/app.scss' // 'destination': 'source'
@@ -138,18 +159,7 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: 'app/resources/sass/**/*.scss',
-        tasks: 'sass:dev'
-      }
-    },
-    cssmin: {
-      target: {
-        files: [{
-          expand: true,
-          cwd: 'app/assets/css',
-          src: ['*.css', '!*.min.css'],
-          dest: 'app/assets/css',
-          ext: '.min.css'
-        }]
+        tasks: ['sass_globbing', 'sass:dev', 'postcss']
       }
     }
   });
@@ -161,18 +171,16 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('build-nosass', [
-    'clean',
-    'ngconstant:build',
-    'requirejs',
-    'string-replace',
-    'copy'
+  grunt.registerTask('build-css', [
+    'clean:css',
+    'sass_globbing',
+    'sass:dev',
+    'postcss'
   ]);
 
   grunt.registerTask('build', [
-    'clean',
-    'sass:dev',
-    'cssmin',
+    'clean:build',
+    'build-css',
     'ngconstant:build',
     'requirejs',
     'string-replace',
@@ -180,9 +188,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('deploy', [
-    'clean',
-    'sass:dist',
-    'cssmin',
+    'clean:build',
+    'build-css',
     'ngconstant:deploy',
     'requirejs',
     'string-replace',

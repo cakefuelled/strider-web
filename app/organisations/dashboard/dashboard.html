@@ -6,10 +6,10 @@
       </a>
     </div>
     <div class="navbar-text" style="width: 150px; margin-left:15%; display:inline-block">
-      <div class="scan-area">
+      <div class="scan-area" ng-class="{'scan-waiting': !scanner.ready,'scan-ready': scanner.ready}">
         <span ng-show="!scanner.ready">Click to scan</span> 
         <span ng-show="scanner.ready">Ready</span> 
-        <span class="scan-indicator" ng-class="{'scan-waiting': !scanner.ready,'scan-ready': scanner.ready}"></span>
+        <span class="scan-indicator"></span>
         <input ng-focus="scanner.ready = true" ng-blur="scanner.ready = false" type="text" class="scan-input form-transparent" ng-model="scanner.text" ng-model-options="{ debounce: 100 }">
       </div>
     </div>
