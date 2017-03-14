@@ -14,6 +14,8 @@ $ bower install
 
 Now serve your files and load index.html. An easy way is to use `python -m "SimpleHTTPServer"` and navigate to http://localhost:8000/.
 
+You will need a running [Strider Server](https://github.com/cakefuelled/strider-server), and you can follow the instructions in that project to get it up and running.
+
 #### AuthHandler Fix
 
 There is a problem with the angular-auth-interceptor module that may prevent you from loading Strider (with a TypeError in angular-resource.js). If this is the case, after the bower install step, you should replace lines 5-13 in bower_components/angular-auth-interceptor/authHandler.js with the following:
