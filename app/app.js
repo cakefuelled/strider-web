@@ -8,8 +8,7 @@ define([
   // Package deps
   'angular',
   'qrcodejs',
-  'jsbarcode',
-  'jsbarcode_code128',
+  'JsBarcode',
   'ui-router',
   'angular-ladda',
   'angular-storage',

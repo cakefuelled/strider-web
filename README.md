@@ -1,6 +1,6 @@
 # Strider [Web client]
 
-##Running locally
+## Running locally
 You'll need [npm](http://nodejs.org/download/) and [grunt](http://gruntjs.com/installing-grunt) for this to work.
 
 First install dependencies:
@@ -14,7 +14,7 @@ $ bower install
 
 Now serve your files and load index.html. An easy way is to use `python -m "SimpleHTTPServer"` and navigate to http://localhost:8000/.
 
-####AuthHandler Fix
+#### AuthHandler Fix
 
 There is a problem with the angular-auth-interceptor module that may prevent you from loading Strider (with a TypeError in angular-resource.js). If this is the case, after the bower install step, you should replace lines 5-13 in bower_components/angular-auth-interceptor/authHandler.js with the following:
 
@@ -30,7 +30,7 @@ return {
 }
 ```
 
-##Deploying
+## Deploying
 The whole process of compiling and deploying to the production environment is done with **grunt**. At the moment there are two tasks available:
 
 1. `build` Generates a build/ folder with all the necessary files to run the app. Use it to test that everything works.
@@ -42,7 +42,7 @@ So to deploy your work:
 $ grunt deploy
 ```
 
-##Adding dependencies
+## Adding dependencies
 Use **bower** to add any client-side JavaScript:
 
 ```
@@ -58,10 +58,10 @@ $ grunt
 The default task for grunt takes all the bower components and adds them to the Requirejs paths configuration, so they are available in all the modules.
 Now you can simply add the dependency with the bower installed name.
 
-##Contributing
+## Contributing
 Pull Requests are always welcome, take a look at the existing code to become familiar with our style guide.
 
-##License
+## License
 Strider is released under the GNU Aferro GPL v3.0 License
 
 If you want to use it for commercial purposes get in touch with us.
